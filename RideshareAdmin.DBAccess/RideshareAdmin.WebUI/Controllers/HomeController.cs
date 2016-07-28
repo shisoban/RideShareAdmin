@@ -26,5 +26,12 @@ namespace RideshareAdmin.WebUI.Controllers
 
             return View();
         }
+
+        public ActionResult Dashbord()
+        {
+            ViewBag.Message = "Your Dashbord page.";
+
+            return View();
+        }
     }
 }
