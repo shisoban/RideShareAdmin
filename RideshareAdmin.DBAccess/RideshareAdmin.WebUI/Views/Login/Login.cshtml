@@ -6,11 +6,11 @@
 }
 
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = ""; 
 }
-<link href="~/admin-lte/css/skins/skin-blue.css" rel="stylesheet" />
-<link href="~/admin-lte/css/AdminLTE.min.css" rel="stylesheet" />
-<link href="~/admin-lte/css/skins/skin-blue.css" rel="stylesheet" />
+<link href="~/Content/css/AdminLTE.css" rel="stylesheet" />
+<link href="~/Content/css/AdminLTE.min.css" rel="stylesheet" />
+<link href="~/Content/css/blue.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
             <a href=""><b>Rideshare</b>Admin</a>
         </div>
         <div class="login-box-body">
-            <section id="loginForm">
+           
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                     @Html.AntiForgeryToken()
@@ -53,7 +53,7 @@
 
                     </div>
                 }
-            </section>
+            
         </div>
     </div>
 </div>
