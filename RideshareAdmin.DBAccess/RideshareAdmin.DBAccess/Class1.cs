@@ -8,5 +8,9 @@ namespace RideshareAdmin.DBAccess
 {
     public class Class1
     {
+        public Class1()
+        {
+
+        }
     }
 }
