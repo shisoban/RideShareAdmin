@@ -118,9 +118,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminLte\AdminLte.cs" />
+    <Compile Include="AdminLte\Breadcrumb.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -160,6 +163,48 @@
     <Content Include="admin-lte\css\skins\_all-skins.min.css" />
     <Content Include="admin-lte\js\app.js" />
     <Content Include="admin-lte\js\app.min.js" />
+    <Content Include="Content\AdminLTE\AdminLTE.css" />
+    <Content Include="Content\AdminLTE\AdminLTE.min.css" />
+    <Content Include="Content\AdminLTE\img\avatar.png" />
+    <Content Include="Content\AdminLTE\img\avatar04.png" />
+    <Content Include="Content\AdminLTE\img\avatar2.png" />
+    <Content Include="Content\AdminLTE\img\avatar3.png" />
+    <Content Include="Content\AdminLTE\img\avatar5.png" />
+    <Content Include="Content\AdminLTE\img\boxed-bg.jpg" />
+    <Content Include="Content\AdminLTE\img\boxed-bg.png" />
+    <Content Include="Content\AdminLTE\img\credit\american-express.png" />
+    <Content Include="Content\AdminLTE\img\credit\cirrus.png" />
+    <Content Include="Content\AdminLTE\img\credit\mastercard.png" />
+    <Content Include="Content\AdminLTE\img\credit\mestro.png" />
+    <Content Include="Content\AdminLTE\img\credit\paypal.png" />
+    <Content Include="Content\AdminLTE\img\credit\paypal2.png" />
+    <Content Include="Content\AdminLTE\img\credit\visa.png" />
+    <Content Include="Content\AdminLTE\img\default-50x50.gif" />
+    <Content Include="Content\AdminLTE\img\icons.png" />
+    <Content Include="Content\AdminLTE\img\photo1.png" />
+    <Content Include="Content\AdminLTE\img\photo2.png" />
+    <Content Include="Content\AdminLTE\img\user1-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user2-160x160.jpg" />
+    <Content Include="Content\AdminLTE\img\user3-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user4-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user5-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user6-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user7-128x128.jpg" />
+    <Content Include="Content\AdminLTE\img\user8-128x128.jpg" />
+    <Content Include="Content\AdminLTE\skins\skin-black.css" />
+    <Content Include="Content\AdminLTE\skins\skin-black.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-blue.css" />
+    <Content Include="Content\AdminLTE\skins\skin-blue.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-green.css" />
+    <Content Include="Content\AdminLTE\skins\skin-green.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-purple.css" />
+    <Content Include="Content\AdminLTE\skins\skin-purple.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-red.css" />
+    <Content Include="Content\AdminLTE\skins\skin-red.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-yellow.css" />
+    <Content Include="Content\AdminLTE\skins\skin-yellow.min.css" />
+    <Content Include="Content\AdminLTE\skins\_all-skins.css" />
+    <Content Include="Content\AdminLTE\skins\_all-skins.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -723,7 +768,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Shared\__AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
+    <Content Include="Views\Shared\_AdminTopMenu.cshtml" />
+    <Content Include="Views\Shared\_AdminBreadcrumb.cshtml" />
+    <Content Include="Views\Home\Dashbord.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
