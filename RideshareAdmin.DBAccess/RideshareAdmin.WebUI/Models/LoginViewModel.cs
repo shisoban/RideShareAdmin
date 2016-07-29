@@ -17,5 +17,11 @@ namespace RideshareAdmin.WebUI.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        //Validate the user logon
+        public bool IsValid(string _username, string _password)
+        {
+            return true;
+        }
     }
 }
