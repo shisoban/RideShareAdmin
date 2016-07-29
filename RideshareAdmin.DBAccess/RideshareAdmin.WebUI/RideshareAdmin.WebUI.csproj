@@ -774,6 +774,7 @@
     <Content Include="Views\Shared\_AdminBreadcrumb.cshtml" />
     <Content Include="Views\Home\Dashbord.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
