@@ -5,15 +5,13 @@ using System.Configuration;
 
 namespace RideshareAdmin.DBAccess.UnitOfWork
 {
-    class StudentsUnitOfWork
+    class UserUnitOfWork
     {
-        /*
-        private MongoDatabase _database;
 
-        //protected StudentRepository<Student> _students;
+        private MongoDatabase _database;
         protected UserRepository<User> _user;
 
-        public StudentsUnitOfWork()
+        public UserUnitOfWork()
         {
             var connectionString = ConfigurationManager.AppSettings["MongoDBConectionString"];
             var client = new MongoClient(connectionString);
@@ -21,18 +19,16 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
             var databaseName = ConfigurationManager.AppSettings["MongoDBDatabaseName"];
             _database = server.GetDatabase(databaseName);
         }
-        //public StudentRepository<Student> Students
         public UserRepository<User> users
         {
             get
             {
                 if (_user == null)
-                    //_user = new StudentRepository<Student>(_database, "students");
-                    _user = new UserRepository<User>(_database, "users");
+                _user = new UserRepository<User>(_database, "users");
 
                 return _user;
             }
         }
-        */
+
     }
 }

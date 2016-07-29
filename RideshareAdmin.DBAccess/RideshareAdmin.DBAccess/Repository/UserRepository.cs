@@ -3,12 +3,13 @@ using MongoDB.Driver.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 
 
 namespace RideshareAdmin.DBAccess.Repository
 {
-    class UserRepository
+    public class UserRepository<T> where T : class
     {
         private MongoDatabase _database;
         private string _tableName;
