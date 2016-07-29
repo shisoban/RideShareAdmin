@@ -43,7 +43,7 @@ namespace RideshareAdmin.DBAccess.Repository
         {
             MongoCursor<T> cursor = _collection.FindAll();
             return cursor.AsQueryable<T>();
-
+            //
         }
 
         /// <summary>
