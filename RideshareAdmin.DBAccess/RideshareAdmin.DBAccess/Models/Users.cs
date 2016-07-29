@@ -23,12 +23,12 @@ namespace RideshareAdmin.DBAccess.Models
         public string FirstName { get; set; }
 
         [Required]
-        //[DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         [BsonElement("lastname")]
         public string LastName { get; set; }
 
         [Required]
-        //[DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress)]
         [BsonElement("username")]
         public string UserName { get; set; }
 
