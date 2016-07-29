@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RideshareAdmin.Services
+
+namespace  RideshareAdmin.Services
 {
-    public class Class1
+    public interface IUserService
     {
+        Users Get(int i);
+
     }
 }
