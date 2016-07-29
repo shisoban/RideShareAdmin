@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.DBAccess", "RideshareAdmin.DBAccess\RideshareAdmin.DBAccess.csproj", "{3F7FFBD1-457E-4C02-AF6D-D483367BC423}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.WebAPI", "RideshareAdmin.WebAPI\RideshareAdmin.WebAPI.csproj", "{9FA16860-21F6-47E3-A34A-AF76FE0A3F7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.WebUI", "RideshareAdmin.WebUI\RideshareAdmin.WebUI.csproj", "{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.Services", "RideshareAdmin.Services\RideshareAdmin.Services.csproj", "{9D1B65A1-D617-4D4D-B0AC-63362F262423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
