@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace RideshareAdmin.DBAccess.Models
 {
-    class Users
+    class User
     {
+        /*
+        [BsonElement("_id")]
+        public int firstName { get; set; }
+        public string lastName { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        */
+        
         protected static IMongoClient _client;
         protected static IMongoDatabase _database;
 
@@ -34,5 +42,6 @@ namespace RideshareAdmin.DBAccess.Models
 
         [BsonElement("password")]
         public string Password { get; set; }
+        
     }
 }
