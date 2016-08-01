@@ -25,20 +25,20 @@ namespace RideshareAdmin.Services
             return _sUnitOfwork.users.GetAll();
         }
 
-        public void Delete(int id)
-        {
-            _sUnitOfwork.users.Delete(s => s.userID, id);
-        }
+        //public void Delete(int id)
+        //{
+        //    _sUnitOfwork.users.Delete(s => s.userID, id);
+        //}
 
-        public void Insert(User user)
-        {
-            _sUnitOfwork.users.Add(user);
-        }
+        //public void Insert(User user)
+        //{
+        //    _sUnitOfwork.users.Add(user);
+        //}
 
-        public void Update(User user)
-        {
-            _sUnitOfwork.users.Update(s => s.userID, user.userID,user);
-        }
+        //public void Update(User user)
+        //{
+        //    _sUnitOfwork.users.Update(s => s.userID, user.userID,user);
+        //}
 
     }
 }

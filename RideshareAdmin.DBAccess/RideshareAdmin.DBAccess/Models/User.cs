@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -12,36 +13,13 @@ namespace RideshareAdmin.DBAccess.Models
    public class User
     {
 
-        [BsonElement("_id")]
-        public int firstName { get; set; }
+        //[BsonElement("_id")]
+        public ObjectId Id { get; set; }
+        public string firstName { get; set; }
         public string lastName { get; set; }
         public string userName { get; set; }
         public string password { get; set; }
-
-
-        //protected static IMongoClient _client;
-        //protected static IMongoDatabase _database;
-
-        //public object _id { get; set; } //MongoDb uses this field as identity.
-
-        public int userID { get; set; }
-
-        //[Required]
-        //[BsonElement("firstname")]
-        //public string FirstName { get; set; }
-
-        //[Required]
-        //[DataType(DataType.Password)]
-        //[BsonElement("lastname")]
-        //public string LastName { get; set; }
-
-        //[Required]
-        //[DataType(DataType.EmailAddress)]
-        //[BsonElement("username")]
-        //public string UserName { get; set; }
-
-        //[BsonElement("password")]
-        //public string Password { get; set; }
-
+        public int __v { get; set; }
+        public string email  { get; set;}
     }
 }

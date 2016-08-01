@@ -24,10 +24,9 @@ namespace RideshareAdmin.WebAPI.Controllers
             var user = _userService.Get(id);
             if (user != null)
             {
-                // var i = student.StudentID + 2;
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             }
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found for provided id.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided id.");
         }
 
         public HttpResponseMessage GetAll()
@@ -35,21 +34,21 @@ namespace RideshareAdmin.WebAPI.Controllers
             var user = _userService.GetAll();
             if (user.Any())
                 return Request.CreateResponse(HttpStatusCode.OK, user);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
         }
 
-        public void Post([FromBody]User user)
-        {
-            _userService.Insert(user);
+        //public void Post([FromBody]User user)
+        //{
+        //    _userService.Insert(user);
 
-        }
-        public void Delete(int id)
-        {
-            _userService.Delete(id);
-        }
-        public void Put([FromBody]User user)
-        {
-            _userService.Update(user);
-        }
+        //}
+        //public void Delete(int id)
+        //{
+        //    _userService.Delete(id);
+        //}
+        //public void Put([FromBody]User user)
+        //{
+        //    _userService.Update(user);
+        //}
     }
 }
