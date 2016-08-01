@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\..\..\C#\WebApplication3\WebApplication3\bin\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="RideshareAdmin.DBAccess">
+      <HintPath>..\RideshareAdmin.DBAccess\bin\Debug\RideshareAdmin.DBAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,12 +49,6 @@
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RideshareAdmin.DBAccess\RideshareAdmin.DBAccess.csproj">
-      <Project>{3f7ffbd1-457e-4c02-af6d-d483367bc423}</Project>
-      <Name>RideshareAdmin.DBAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

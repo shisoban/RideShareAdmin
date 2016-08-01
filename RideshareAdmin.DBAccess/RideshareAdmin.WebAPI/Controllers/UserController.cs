@@ -17,39 +17,39 @@ namespace RideshareAdmin.WebAPI.Controllers
             _userService = new UserService();
         }
 
-        // GET api/student/id
+        // GET api/user/id
         public HttpResponseMessage Get(int id)
         {
 
-            var student = _userService.Get(id);
-            if (student != null)
+            var user = _userService.Get(id);
+            if (user != null)
             {
                 // var i = student.StudentID + 2;
-                return Request.CreateResponse(HttpStatusCode.OK, student);
+                return Request.CreateResponse(HttpStatusCode.OK, user);
             }
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found for provided id.");
         }
 
         public HttpResponseMessage GetAll()
         {
-            var students = _userService.GetAll();
-            if (students.Any())
-                return Request.CreateResponse(HttpStatusCode.OK, students);
+            var user = _userService.GetAll();
+            if (user.Any())
+                return Request.CreateResponse(HttpStatusCode.OK, user);
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
         }
 
-        public void Post([FromBody]User student)
+        public void Post([FromBody]User user)
         {
-            _userService.Insert(student);
+            _userService.Insert(user);
 
         }
         public void Delete(int id)
         {
             _userService.Delete(id);
         }
-        public void Put([FromBody]User student)
+        public void Put([FromBody]User user)
         {
-            _userService.Update(student);
+            _userService.Update(user);
         }
     }
 }

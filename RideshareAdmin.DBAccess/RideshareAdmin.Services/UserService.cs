@@ -15,8 +15,8 @@ namespace RideshareAdmin.Services
 
         public User Get(int i)
         {
-            var it = _sUnitOfwork.users.Get(i);
-            return (it);
+            var user = _sUnitOfwork.users.Get(i);
+            return (user);
         }
 
 
