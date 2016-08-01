@@ -10,7 +10,7 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
 
         private MongoDatabase _database;
         protected UserRepository<User> _user;
-
+                
         public UserUnitOfWork()
         {
             var connectionString = ConfigurationManager.AppSettings["MongoDBConectionString"];

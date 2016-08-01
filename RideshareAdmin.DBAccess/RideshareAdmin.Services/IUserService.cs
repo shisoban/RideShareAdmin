@@ -11,8 +11,8 @@ namespace  RideshareAdmin.Services
     public interface IUserService
     {
         void Insert(User user);
-        User Get(int i);
-        IQueryable<User> GetAll();
+        User Get(int i);    
+        IQueryable<User> GetAll();  
         void Delete(int id);
         void Update(User user);
 
