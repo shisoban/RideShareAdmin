@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using RideshareAdmin.WebUI.Service_Wrapper;
 
 namespace RideshareAdmin.WebUI.Controllers
 {
@@ -17,6 +18,7 @@ namespace RideshareAdmin.WebUI.Controllers
 
         public ActionResult Login()
         {
+
             return View();
         }
 
@@ -25,6 +27,11 @@ namespace RideshareAdmin.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                ServiceWrapper sw = new ServiceWrapper();
+                if ( true)
+                {
+
+                }
                 //if (login.IsValid(user.UserName, user.Password))
                 //{
                 //    FormsAuthentication.SetAuthCookie(user.UserName, user.RememberMe);
