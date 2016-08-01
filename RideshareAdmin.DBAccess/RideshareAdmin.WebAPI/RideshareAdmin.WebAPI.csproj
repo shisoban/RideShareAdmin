@@ -107,6 +107,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RideshareAdmin.DBAccess\RideshareAdmin.DBAccess.csproj">
+      <Project>{3f7ffbd1-457e-4c02-af6d-d483367bc423}</Project>
+      <Name>RideshareAdmin.DBAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RideshareAdmin.Services\RideshareAdmin.Services.csproj">
       <Project>{9d1b65a1-d617-4d4d-b0ac-63362f262423}</Project>
       <Name>RideshareAdmin.Services</Name>
