@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace RideshareAdmin.DBAccess.UnitOfWork
 {
-    class UserUnitOfWork
+    public class UserUnitOfWork
     {
 
         private MongoDatabase _database;

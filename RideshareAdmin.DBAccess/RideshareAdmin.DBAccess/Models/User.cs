@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RideshareAdmin.DBAccess.Models
 {
-    class User
+   public class User
     {
 
         [BsonElement("_id")]
@@ -24,7 +24,7 @@ namespace RideshareAdmin.DBAccess.Models
 
         //public object _id { get; set; } //MongoDb uses this field as identity.
 
-        //public int ID { get; set; }
+        public int userID { get; set; }
 
         //[Required]
         //[BsonElement("firstname")]
