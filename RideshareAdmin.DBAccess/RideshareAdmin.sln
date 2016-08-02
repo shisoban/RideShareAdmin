@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.DBAccess", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.WebAPI", "RideshareAdmin.WebAPI\RideshareAdmin.WebAPI.csproj", "{9FA16860-21F6-47E3-A34A-AF76FE0A3F7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.WebUI", "RideshareAdmin.WebUI\RideshareAdmin.WebUI.csproj", "{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.Services", "RideshareAdmin.Services\RideshareAdmin.Services.csproj", "{9D1B65A1-D617-4D4D-B0AC-63362F262423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.Console", "RideshareAdmin.Console\RideshareAdmin.Console.csproj", "{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{9FA16860-21F6-47E3-A34A-AF76FE0A3F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA16860-21F6-47E3-A34A-AF76FE0A3F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FA16860-21F6-47E3-A34A-AF76FE0A3F7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D411FA1E-6BC4-43AD-8D77-1C8C259E6FB1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D1B65A1-D617-4D4D-B0AC-63362F262423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

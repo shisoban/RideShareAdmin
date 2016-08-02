@@ -1,4 +1,6 @@
 ﻿@using RideshareAdmin.WebUI.AdminLte
+@using RideshareAdmin.WebUI.Models
+@model DashboardVIewModel
 @*
     This is the example main content of the AdminLTE demo and represents a good smattering of AdminLTE functionality in a cshtml
     TODO: Delete this file when you're ready to start building your app
@@ -13,7 +15,8 @@
     // And also set the top titles in the main content area of the page
     ViewBag.Title = "RideShare Admin";
     ViewBag.TitleSmall = "Management Console";
-
+   
+   
     // EXAMPLE:
     // Using the Breadcrumb class to create a dynamically generated breadcrumb on the page with
     // Titles, plus optional icon and URLs
@@ -28,7 +31,7 @@
             <span class="info-box-icon bg-aqua"><i class="fa fa-road"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">Killometers Coverd</span>
-                <span class="info-box-number">90<small>Km</small></span>
+                <span class="info-box-number">@Model.Noofkillometer<small>Km</small></span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->

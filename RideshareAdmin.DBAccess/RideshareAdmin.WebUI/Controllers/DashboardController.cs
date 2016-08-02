@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RideshareAdmin.WebUI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,10 @@ namespace RideshareAdmin.WebUI.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View();
+            //ViewBag.Message = "90";
+            DashboardVIewModel vm = new DashboardVIewModel();
+            vm.Noofkillometer = "234";
+            return View(vm);
         }
 
         /// <summary>

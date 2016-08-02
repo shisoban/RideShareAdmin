@@ -1,5 +1,9 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using MongoDB.Driver.Linq;
+using RideshareAdmin.DBAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +26,18 @@ namespace RideshareAdmin.DBAccess.Repository
             _database = db;
             _tableName = tblName;
             _collection = _database.GetCollection<T>(tblName);
+            test();
         }
 
+        public  void test()
+        {
+            var collection = _database.GetCollection<BsonDocument>("users");
+          //  var filter = Builders<BsonDocument>.Filter.Eq("grades.grade", "B");
+            var query = new QueryDocument("userName", "vuser1");
+            var result = collection.Find(query).ToList();//.AsQueryable<RideshareAdmin.DBAccess.Models.User>;
+            var REsult = BsonSerializer.Deserialize<List<User>>(result.ToJson());
+
+        }
         
         /// <summary>
         /// Generic Get method to get record on the basis of id
