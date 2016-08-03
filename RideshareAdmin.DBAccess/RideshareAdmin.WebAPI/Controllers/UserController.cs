@@ -8,6 +8,7 @@ using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.Services;
 namespace RideshareAdmin.WebAPI.Controllers
 {
+    [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
@@ -18,15 +19,15 @@ namespace RideshareAdmin.WebAPI.Controllers
         }
 
         // GET api/user/id
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(string id)
         {
 
             var user = _userService.Get(id);
-            if (user != null)
+            if (user.Any())
             {
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             }
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided id.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
         }
 
         public HttpResponseMessage GetAll()
@@ -36,6 +37,16 @@ namespace RideshareAdmin.WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
         }
+
+        [Route("Countuser")]
+        public HttpResponseMessage GetCountuser()
+        {
+            var userCount = _userService.GetAll().Count();
+
+            return Request.CreateResponse(HttpStatusCode.OK, userCount);
+
+        }
+
 
         //public void Post([FromBody]User user)
         //{

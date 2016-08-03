@@ -26,7 +26,7 @@ namespace RideshareAdmin.DBAccess.Repository
             _database = db;
             _tableName = tblName;
             _collection = _database.GetCollection<T>(tblName);
-            test();
+           // test();
         }
 
         public  void test()
@@ -38,16 +38,28 @@ namespace RideshareAdmin.DBAccess.Repository
             var REsult = BsonSerializer.Deserialize<List<User>>(result.ToJson());
 
         }
-        
+
         /// <summary>
         /// Generic Get method to get record on the basis of id
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public T Get(int i)
-        {
-            return _collection.FindOneById(i);
+        //public T Get(string i)
+        //{
+        //    return _collection.FindOneById(i);
 
+        //}
+
+        /// <summary>
+        /// Get  method to retrieve user based on userName
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public IQueryable<T> Get(string i)
+        {
+            var query = Query.EQ("userName", i);
+            MongoCursor<T> cursor = _collection.Find(query);
+            return cursor.AsQueryable<T>();
         }
 
         /// <summary>
