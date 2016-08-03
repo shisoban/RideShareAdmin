@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RideshareAdmin.Console", "RideshareAdmin.Console\RideshareAdmin.Console.csproj", "{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessEntities", "BusinessEntities\BusinessEntities.csproj", "{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D056CA2-6EB8-4C34-BFD8-C39D360B6800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

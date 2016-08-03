@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.DBAccess.UnitOfWork;
+using AutoMapper;
+using BusinessEntities;
 
 namespace RideshareAdmin.Services
 {
@@ -20,9 +22,18 @@ namespace RideshareAdmin.Services
         }
 
 
-        public IQueryable<User> GetAll()
+        public IEnumerable<UserEntity> GetAll()
         {
-            return _sUnitOfwork.users.GetAll();
+            var users = _sUnitOfwork.users.GetAll().ToList();
+            if (users.Any())
+            {
+                Mapper.CreateMap<User, UserEntity>();
+                var usersModel = Mapper.Map<List<User>, List<UserEntity>>(users);
+                return usersModel;
+            }
+            return null;
+
+            //return _sUnitOfwork.users.GetAll();
         }
 
         //public void Delete(int id)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RideshareAdmin.DBAccess.Models;
+using BusinessEntities;
 
 
 namespace  RideshareAdmin.Services
@@ -12,10 +13,10 @@ namespace  RideshareAdmin.Services
     {
         // void Insert(User user);
         IQueryable<User> Get(string i);
-      //  test();
-        IQueryable<User> GetAll();
-       // void Delete(int id);
-       // void Update(User user);
+        //  test();
+        IEnumerable<UserEntity> GetAll();
+        // void Delete(int id);
+        // void Update(User user);
 
     }
 }
