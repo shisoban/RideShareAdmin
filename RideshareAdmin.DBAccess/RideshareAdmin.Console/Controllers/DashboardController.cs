@@ -12,6 +12,10 @@ namespace RideshareAdmin.Console.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
+            if (Request.IsAuthenticated)
+            {
+
+            }
             //ViewBag.Message = "90";
             DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
