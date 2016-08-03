@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.Services;
+using BusinessEntities;
+
 namespace RideshareAdmin.WebAPI.Controllers
 {
     [RoutePrefix("api/User")]
@@ -30,12 +32,34 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
         }
 
+        //public HttpResponseMessage GetAll()
+        //{
+        //    var user = _userService.GetAll();
+        //    if (user.Any())
+        //        return Request.CreateResponse(HttpStatusCode.OK, user);
+        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
+        //}
         public HttpResponseMessage GetAll()
         {
-            var user = _userService.GetAll();
-            if (user.Any())
-                return Request.CreateResponse(HttpStatusCode.OK, user);
+            var users = _userService.GetAll();
+            if (users != null)
+            {
+                var userEntities = users as List<UserEntity> ?? users.ToList();
+                if (userEntities.Any())
+                    return Request.CreateResponse(HttpStatusCode.OK, userEntities);
+            }
+            //return Request.CreateResponse(HttpStatusCode.OK, user);
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
+
+            //var products = _productServices.GetAllProducts();
+            //if (products != null)
+            //{
+            //    var productEntities = products as List<ProductEntity> ?? products.ToList();
+            //    if (productEntities.Any())
+            //        return Request.CreateResponse(HttpStatusCode.OK, productEntities);
+            //}
+            //return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Products not found");
+
         }
 
         [Route("Countuser")]
