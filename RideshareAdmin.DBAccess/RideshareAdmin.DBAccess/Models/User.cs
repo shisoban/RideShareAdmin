@@ -13,8 +13,11 @@ namespace RideshareAdmin.DBAccess.Models
    public class User
     {
 
+        
+        [BsonRepresentation(BsonType.ObjectId)]
         //[BsonElement("_id")]
-        public ObjectId Id { get; set; }
+        public string _id { get; set; }
+        //public ObjectId Id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string userName { get; set; }

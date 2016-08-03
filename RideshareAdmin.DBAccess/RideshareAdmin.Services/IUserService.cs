@@ -10,8 +10,8 @@ namespace  RideshareAdmin.Services
 {
     public interface IUserService
     {
-       // void Insert(User user);
-        User Get(int i);
+        // void Insert(User user);
+        IQueryable<User> Get(string i);
       //  test();
         IQueryable<User> GetAll();
        // void Delete(int id);

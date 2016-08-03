@@ -18,15 +18,15 @@ namespace RideshareAdmin.WebAPI.Controllers
         }
 
         // GET api/user/id
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get(string id)
         {
 
             var user = _userService.Get(id);
-            if (user != null)
+            if (user.Any())
             {
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             }
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided id.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
         }
 
         public HttpResponseMessage GetAll()

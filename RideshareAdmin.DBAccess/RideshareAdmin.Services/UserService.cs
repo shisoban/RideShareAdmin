@@ -13,7 +13,7 @@ namespace RideshareAdmin.Services
         private readonly UserUnitOfWork _sUnitOfwork = new UserUnitOfWork();
 
 
-        public User Get(int i)
+        public IQueryable<User> Get(string i)
         {
             var user = _sUnitOfwork.users.Get(i);
             return (user);
