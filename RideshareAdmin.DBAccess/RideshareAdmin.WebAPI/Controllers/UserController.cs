@@ -8,6 +8,7 @@ using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.Services;
 namespace RideshareAdmin.WebAPI.Controllers
 {
+    [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
@@ -36,6 +37,16 @@ namespace RideshareAdmin.WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, user);
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
         }
+
+        [Route("Countuser")]
+        public HttpResponseMessage GetCountuser()
+        {
+            var userCount = _userService.GetAll().Count();
+
+            return Request.CreateResponse(HttpStatusCode.OK, userCount);
+
+        }
+
 
         //public void Post([FromBody]User user)
         //{
