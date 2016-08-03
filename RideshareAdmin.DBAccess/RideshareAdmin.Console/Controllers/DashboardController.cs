@@ -1,4 +1,5 @@
 ﻿using RideshareAdmin.Console.Models;
+using RideshareAdmin.Console.ServiceWrapp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,15 @@ namespace RideshareAdmin.Console.Controllers
 {
     public class DashboardController : Controller
     {
+        private ServiceWrapper carsService = new ServiceWrapper();
+        
         // GET: Dashboard
+        [Authorize]
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
-            {
-
-            }
-            //ViewBag.Message = "90";
-            DashboardVIewModel vm = new DashboardVIewModel();
+            UserModel car = carsService.GetCarById();
+        //ViewBag.Message = "90";
+        DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
             return View(vm);
            
