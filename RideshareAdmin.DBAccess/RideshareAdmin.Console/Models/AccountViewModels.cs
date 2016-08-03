@@ -7,7 +7,9 @@ namespace RideshareAdmin.Console.Models
     {
         [Required]
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
+
     }
 
     public class ExternalLoginListViewModel
