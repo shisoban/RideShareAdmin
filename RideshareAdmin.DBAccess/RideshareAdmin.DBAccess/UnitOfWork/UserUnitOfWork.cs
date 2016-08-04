@@ -10,7 +10,7 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
 
         private MongoDatabase _database;
         protected UserRepository<User> _user;
-                
+
         public UserUnitOfWork()
         {
             var connectionString = ConfigurationManager.AppSettings["MongoDBConectionString"];
@@ -18,7 +18,6 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
             var client = new MongoClient(connectionString);
             var server = client.GetServer();
             var databaseName = ConfigurationManager.AppSettings["MongoDBDatabaseName"];
-            var
             _database = server.GetDatabase(databaseName);
         }
         public UserRepository<User> users
@@ -32,7 +31,7 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
             }
         }
 
-        public Repository< Uercoordinates>
+        //public Repository< Uercoordinates>
 
     }
 }

@@ -66,12 +66,21 @@ namespace RideshareAdmin.DBAccess.Repository
         /// Get all records 
         /// </summary>
         /// <returns></returns>
-        public IQueryable<T> GetAll()
+        //public IQueryable<T> GetAll()
+        //{
+        //    MongoCursor<T> cursor = _collection.FindAll();
+        //    return cursor.AsQueryable<T>();
+        //    //
+        //}
+ 
+        public List<User> GetAll()
         {
-            MongoCursor<T> cursor = _collection.FindAll();
-            return cursor.AsQueryable<T>();
-            //
+            var userCollection = _database.GetCollection<BsonDocument>("users");
+            var userList = userCollection.FindAll().ToList();
+            var DeserializedUser = BsonSerializer.Deserialize<List<User>>(userList.ToJson());
+            return DeserializedUser;
         }
+
 
         /// <summary>
         /// Generic add method to insert enities to collection 

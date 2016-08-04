@@ -15,6 +15,7 @@ namespace  RideshareAdmin.Services
         IQueryable<User> Get(string i);
         //  test();
         IEnumerable<UserEntity> GetAll();
+        //List<User> GetAll();
         // void Delete(int id);
         // void Update(User user);
 
