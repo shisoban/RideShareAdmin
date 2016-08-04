@@ -78,6 +78,11 @@ namespace RideshareAdmin.DBAccess.Repository
             var userCollection = _database.GetCollection<BsonDocument>("users");
             var userList = userCollection.FindAll().ToList();
             var DeserializedUser = BsonSerializer.Deserialize<List<User>>(userList.ToJson());
+            UserDetail ud = new UserDetail();
+            for (int i = 0; i < DeserializedUser.Count; i++)
+            {
+                    //ud.fname
+            }
             return DeserializedUser;
         }
 

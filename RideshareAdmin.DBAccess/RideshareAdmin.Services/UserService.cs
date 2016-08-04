@@ -22,7 +22,7 @@ namespace RideshareAdmin.Services
         }
 
 
-        public IEnumerable<UserEntity> GetAll()
+        public IEnumerable<UserEntity> GetAll() //map
         {
             var users = _sUnitOfwork.users.GetAll().ToList();
             if (users.Any())

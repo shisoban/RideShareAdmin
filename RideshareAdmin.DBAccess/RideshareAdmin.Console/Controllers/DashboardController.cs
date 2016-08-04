@@ -10,13 +10,13 @@ namespace RideshareAdmin.Console.Controllers
 {
     public class DashboardController : Controller
     {
-        private ServiceWrapper carsService = new ServiceWrapper();
+        private ServiceWrapper sw = new ServiceWrapper();
         
         // GET: Dashboard
         [Authorize]
         public ActionResult Index()
         {
-            UserModel car = carsService.GetCarById();
+            UserModel user = sw.GetUsers();
         //ViewBag.Message = "90";
         DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
