@@ -7,9 +7,9 @@ namespace RideshareAdmin.Console.Models
 {
     public class UserDetailViewModel
     {
-        string firstname { get; set; }
-        string lastname { get; set; }
-        string userName { get; set; }
-        string email { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string userName { get; set; }
+        public string email { get; set; }
     }
 }
