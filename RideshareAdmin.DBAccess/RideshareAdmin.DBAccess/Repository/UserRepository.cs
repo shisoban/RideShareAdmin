@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-
-
 namespace RideshareAdmin.DBAccess.Repository
 {
     public class UserRepository<T> where T : class
@@ -29,15 +27,15 @@ namespace RideshareAdmin.DBAccess.Repository
            // test();
         }
 
-        public  void test()
-        {
-            var collection = _database.GetCollection<BsonDocument>("users");
-          //  var filter = Builders<BsonDocument>.Filter.Eq("grades.grade", "B");
-            var query = new QueryDocument("userName", "vuser1");
-            var result = collection.Find(query).ToList();//.AsQueryable<RideshareAdmin.DBAccess.Models.User>;
-            var REsult = BsonSerializer.Deserialize<List<User>>(result.ToJson());
+        //public  void test()
+        //{
+        //    var collection = _database.GetCollection<BsonDocument>("users");
+        //  //  var filter = Builders<BsonDocument>.Filter.Eq("grades.grade", "B");
+        //    var query = new QueryDocument("userName", "vuser1");
+        //    var result = collection.Find(query).ToList();//.AsQueryable<RideshareAdmin.DBAccess.Models.User>;
+        //    var REsult = BsonSerializer.Deserialize<List<User>>(result.ToJson());
 
-        }
+        //}
 
         /// <summary>
         /// Generic Get method to get record on the basis of id

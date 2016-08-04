@@ -67,9 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Uercoordinates.cs" />
+    <Compile Include="Models\Usercoordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\CoordinateRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="UnitOfWork\UserUnitOfWork.cs" />
   </ItemGroup>

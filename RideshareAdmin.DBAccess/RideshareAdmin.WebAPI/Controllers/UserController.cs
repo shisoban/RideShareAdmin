@@ -14,11 +14,14 @@ namespace RideshareAdmin.WebAPI.Controllers
     public class UserController : ApiController
     {
         private readonly IUserService _userService;
+        private readonly ICoordinateService _usercoordinateService;
 
         public UserController()
         {
             _userService = new UserService();
+            _usercoordinateService = new CoordinateService();
         }
+
 
         // GET api/user/id
         public HttpResponseMessage Get(string id)
@@ -70,6 +73,16 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, userCount);
 
         }
+
+        [Route("GetAllCoordinates")]
+        public HttpResponseMessage GetAllCoordinates()
+        {
+            var usercoordinates = _usercoordinateService.GetAllCoordinate();
+            if (usercoordinates.Any())
+                return Request.CreateResponse(HttpStatusCode.OK, usercoordinates);
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No result found.");
+        }
+
 
 
         //public void Post([FromBody]User user)

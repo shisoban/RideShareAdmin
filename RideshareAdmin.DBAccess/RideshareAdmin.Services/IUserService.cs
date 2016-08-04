@@ -20,4 +20,11 @@ namespace  RideshareAdmin.Services
         // void Update(User user);
 
     }
+
+    public interface ICoordinateService
+    {
+        //IQueryable<Usercoordinate> GetAllCoordinate();
+        IEnumerable<CoordinateEntity> GetAllCoordinate();
+        //List<Usercoordinate> GetAllCoordinate();
+    }
 }
