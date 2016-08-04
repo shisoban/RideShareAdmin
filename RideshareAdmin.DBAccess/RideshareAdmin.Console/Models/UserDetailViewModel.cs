@@ -5,7 +5,7 @@ using System.Web;
 
 namespace RideshareAdmin.Console.Models
 {
-    public class UserModel
+    public class UserDetailViewModel
     {
         public string firstname { get; set; }
         public string lastname { get; set; }

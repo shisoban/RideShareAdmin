@@ -26,7 +26,7 @@ namespace RideshareAdmin.Console.ServiceWrapp
             }
         }
 
-        public UserModel GetCarById()
+        public UserModel GetUsers()
         {
             //   string uri = baseUri + id;
             string uri = baseUri;
@@ -36,17 +36,22 @@ namespace RideshareAdmin.Console.ServiceWrapp
                 var result = response.ToString();
                 JArray v = JArray.Parse(response.Result);
                 //string firstname, lastname, userName, password, __V, email;
+                UserModel usermodel = new UserModel();
+        //  public string password { get; set; }
+        //   public int __v { get; set; }
+           
                 for (int i = 0; i < v.Count; i++)
                 {
-                    
-                    //firstname = v[i]["dri_lname"].ToString();
-                    //lastname = v[i]["dri_phoneno"].ToString();
-                    //userName = v[i]["veh_Latitude"].ToString();
-                    //password = v[i]["veh_Longitude"].ToString();
+                   
+                    usermodel.firstname = v[i]["firstName"].ToString();
+                    usermodel.lastname = v[i]["lastName"].ToString();
+                    usermodel.userName= v[i]["userName"].ToString();
+                    usermodel.email = v[i]["email"].ToString();
                     //__V = v[i]["veh_description"].ToString();
                     //email = v[i]["veh_location"].ToString();
+                    
                 }
-                return null;
+                return usermodel;
             }
         }
         public static async Task RunAsync()
