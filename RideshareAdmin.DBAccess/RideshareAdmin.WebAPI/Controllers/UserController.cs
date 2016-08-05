@@ -65,14 +65,25 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
-        [Route("Countuser")]
+        //[Route("Countuser")]
+        //public HttpResponseMessage GetCountuser()
+        //{
+        //    var userCount = _userService.GetAll().Count();
+
+        //    return Request.CreateResponse(HttpStatusCode.OK, userCount);
+
+        //}
+
+        [Route("CountUser")]
         public HttpResponseMessage GetCountuser()
         {
-            var userCount = _userService.GetAll().Count();
+            UserCalculations userCount = _userService.GetUserCount();
+
 
             return Request.CreateResponse(HttpStatusCode.OK, userCount);
 
         }
+
 
         [Route("GetAllCoordinates")]
         public HttpResponseMessage GetAllCoordinates()
