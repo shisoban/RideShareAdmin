@@ -12,7 +12,7 @@ namespace RideshareAdmin.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserUnitOfWork _sUnitOfwork = new UserUnitOfWork();
+        private readonly UnitOfWork _sUnitOfwork = new UnitOfWork();
 
 
         public IQueryable<User> Get(string i)

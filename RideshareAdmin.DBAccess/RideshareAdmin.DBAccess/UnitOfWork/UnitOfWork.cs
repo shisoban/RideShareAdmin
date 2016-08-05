@@ -5,15 +5,15 @@ using System.Configuration;
 
 namespace RideshareAdmin.DBAccess.UnitOfWork
 {
-    public class UserUnitOfWork
+    public class UnitOfWork
     {
 
         private MongoDatabase _database1;
         private MongoDatabase _database2;
-        protected UserRepository<User> _user;
-        protected CoordinateRepository<Usercoordinate> _usercoordinate;
+        protected Repository<User> _user;
+       protected Repository<Usercoordinate> _usercoordinate;
 
-        public UserUnitOfWork()
+        public UnitOfWork()
         {
             var connectionString = ConfigurationManager.AppSettings["MongoDBConectionString"];
 
@@ -27,23 +27,23 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
             var databaseName2 = ConfigurationManager.AppSettings["MongoDBDatabaseName2"];
             _database2 = server.GetDatabase(databaseName2);
         }
-        public UserRepository<User> users
+        public Repository<User> users
         {
             get
             {
                 if (_user == null)
-                    _user = new UserRepository<User>(_database1, "users");
+                    _user = new Repository<User>(_database1, "users");
 
                 return _user;
             }
         }
 
-        public CoordinateRepository<Usercoordinate> usercoordinates
+        public Repository<Usercoordinate> usercoordinates
         {
             get
             {
                 if (_usercoordinate == null)
-                    _usercoordinate = new CoordinateRepository<Usercoordinate>(_database2, "usercoordinates");
+                    _usercoordinate = new Repository<Usercoordinate>(_database2, "usercoordinates");
 
                 return _usercoordinate;
             }

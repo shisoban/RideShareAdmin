@@ -12,7 +12,7 @@ namespace RideshareAdmin.Services
 {
     public class CoordinateService  : ICoordinateService
     {
-        private readonly UserUnitOfWork _sUnitOfwork1 = new UserUnitOfWork();
+        private readonly UnitOfWork _sUnitOfwork1 = new UnitOfWork();
 
         //public IQueryable<Usercoordinate> GetAllCoordinate()
         //{
