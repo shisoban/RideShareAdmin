@@ -16,10 +16,11 @@ namespace RideshareAdmin.Console.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            UserModel user = sw.GetUsers();
+            DashboardStatics chartdata = sw.GetNumberstatics();
         //ViewBag.Message = "90";
-        DashboardVIewModel vm = new DashboardVIewModel();
+            DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
+            vm.Noofusers = chartdata.noofusers;
             return View(vm);
            
         }

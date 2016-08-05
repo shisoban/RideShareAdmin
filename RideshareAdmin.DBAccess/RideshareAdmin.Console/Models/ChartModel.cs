@@ -5,8 +5,11 @@ using System.Web;
 
 namespace RideshareAdmin.Console.Models
 {
-    public class UserDetailViewModel
+    public class ChartModel
     {
-        public List<UserModel> Users { get; set; }
+    }
+    public class DashboardStatics
+    {
+        public string noofusers { get; set; }
     }
 }
