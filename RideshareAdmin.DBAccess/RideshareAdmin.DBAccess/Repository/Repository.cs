@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace RideshareAdmin.DBAccess.Repository
 {
-    public class UserRepository<T> where T : class
+    public class Repository<T> where T : class
     {
         private MongoDatabase _database;
         private string _tableName;
@@ -19,7 +19,7 @@ namespace RideshareAdmin.DBAccess.Repository
 
         // constructor to initialise database and table/collection  
 
-        public UserRepository(MongoDatabase db, string tblName)
+        public Repository(MongoDatabase db, string tblName)
         {
             _database = db;
             _tableName = tblName;
@@ -70,21 +70,28 @@ namespace RideshareAdmin.DBAccess.Repository
         //    return cursor.AsQueryable<T>();
         //    //
         //}
- 
-        public List<User> GetAll()
+
+        //public List<User> GetAll() //specific table 
+        //{
+        //    var userCollection = _database.GetCollection<BsonDocument>("users");
+        //    var userList = userCollection.FindAll().ToList();
+        //    var DeserializedUser = BsonSerializer.Deserialize<List<User>>(userList.ToJson());
+        //    UserDetail ud = new UserDetail();
+        //    for (int i = 0; i < DeserializedUser.Count; i++)
+        //    {
+        //            //ud.fname
+        //    }
+        //    return DeserializedUser;
+        //}
+
+            //generic 
+        public List<T> GetAll()
         {
-            var userCollection = _database.GetCollection<BsonDocument>("users");
-            var userList = userCollection.FindAll().ToList();
-            var DeserializedUser = BsonSerializer.Deserialize<List<User>>(userList.ToJson());
-            UserDetail ud = new UserDetail();
-            for (int i = 0; i < DeserializedUser.Count; i++)
-            {
-                    //ud.fname
-            }
+            //var userCollection = _database.GetCollection<BsonDocument>("users");
+            var userList = _collection.FindAll().ToList();
+            var DeserializedUser = BsonSerializer.Deserialize<List<T>>(userList.ToJson());
             return DeserializedUser;
         }
-
-
         /// <summary>
         /// Generic add method to insert enities to collection 
         /// </summary>
