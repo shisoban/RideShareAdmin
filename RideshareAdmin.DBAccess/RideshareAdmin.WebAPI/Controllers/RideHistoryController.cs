@@ -40,7 +40,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
             if (rideHistories.Any())
                 return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No result found.");
             /*
             if (rideHistories != null)
             {
@@ -53,20 +53,16 @@ namespace RideshareAdmin.WebAPI.Controllers
                 */
             }
 
-
-/*
-          public HttpResponseMessage GetAll()
+        [Route("RidesCount")]
+        public HttpResponseMessage GetRidesCount()
         {
-            var students = _studentService.GetAll();
-            if (students.Any())
-                return Request.CreateResponse(HttpStatusCode.OK, students);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No students found.");
+            RidesCount ridesCount = _ridehistoriesService.GetRidesCount();
+            List<RidesCount> list = new List<RidesCount>();
+            list.Add(ridesCount);
+            return Request.CreateResponse(HttpStatusCode.OK, list);
+
         }
-        */
 
     }
-
-
-
 }
 

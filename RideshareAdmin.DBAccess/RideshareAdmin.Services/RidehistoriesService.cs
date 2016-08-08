@@ -33,5 +33,15 @@ namespace RideshareAdmin.Services
             }
             return null;
         }
+
+        public RidesCount GetRidesCount()
+        {
+            var ridesCount = _sUnitOfwork.ridehistories.GetAll().Count();
+            RidesCount count = new RidesCount();
+            count.ridesCount = ridesCount;
+            return count;
+
+            //return _sUnitOfwork.users.GetAll();
+        }
     }
 }
