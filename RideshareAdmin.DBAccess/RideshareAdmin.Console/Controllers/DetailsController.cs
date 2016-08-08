@@ -22,11 +22,7 @@ namespace RideshareAdmin.Console.Controllers
             //var usermodel = sw.GetUsers();
             //ViewBag.Message = "90";
             UserDetailViewModel vm = new UserDetailViewModel();
-            
             vm.Users = sw.GetUsers();
-
-
-
             // vm.Noofkillometer = "234";
             // return View(vm);
             return View(vm);
