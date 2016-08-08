@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Ridehistories.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Usercoordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

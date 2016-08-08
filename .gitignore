@@ -243,3 +243,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/RideshareAdmin.DBAccess/RideshareAdmin.WebAPI/Content
+/RideshareAdmin.DBAccess/RideshareAdmin.WebAPI/fonts
+/RideshareAdmin.DBAccess/RideshareAdmin.WebAPI/Scripts
+/RideshareAdmin.DBAccess/RideshareAdmin.WebAPI/Views

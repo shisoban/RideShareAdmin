@@ -27,4 +27,16 @@ namespace  RideshareAdmin.Services
         IEnumerable<CoordinateEntity> GetAllCoordinate();
         //List<Usercoordinate> GetAllCoordinate();
     }
+
+    public interface IRidehistoriesService
+    {
+        // void Insert(User user);
+        IQueryable<Ridehistories> Get(string i);
+        //  test();
+        IEnumerable<Ridehistories> GetAll();
+        //List<User> GetAll();
+        // void Delete(int id);
+        // void Update(User user);
+    }
+
 }
