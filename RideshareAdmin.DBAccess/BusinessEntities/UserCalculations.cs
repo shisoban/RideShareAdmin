@@ -10,4 +10,9 @@ namespace BusinessEntities
     {
         public int userCount { get; set; }
     }
+
+    public class RidesCount
+    {
+        public int ridesCount { get; set; }
+    }
 }

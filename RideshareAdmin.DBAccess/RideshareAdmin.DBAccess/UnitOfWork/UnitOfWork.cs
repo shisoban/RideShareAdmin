@@ -11,7 +11,8 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
         private MongoDatabase _database1;
         private MongoDatabase _database2;
         protected Repository<User> _user;
-       protected Repository<Usercoordinate> _usercoordinate;
+        protected Repository<Usercoordinate> _usercoordinate;
+        protected Repository<Ridehistories> _ridehistories;
 
         public UnitOfWork()
         {
@@ -46,6 +47,17 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
                     _usercoordinate = new Repository<Usercoordinate>(_database2, "usercoordinates");
 
                 return _usercoordinate;
+            }
+        }
+
+        public Repository<Ridehistories> ridehistories
+        {
+            get
+            {
+                if (_ridehistories == null)
+                    _ridehistories = new Repository<Ridehistories>(_database2, "ridehistories");
+
+                return _ridehistories;
             }
         }
 
