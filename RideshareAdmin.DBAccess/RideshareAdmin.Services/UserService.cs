@@ -36,6 +36,16 @@ namespace RideshareAdmin.Services
             //return _sUnitOfwork.users.GetAll();
         }
 
+        public UserCalculations GetUserCount()
+        {
+            var usercount = _sUnitOfwork.users.GetAll().Count();
+            UserCalculations count = new UserCalculations();
+            count.userCount = usercount;
+            return count;
+
+            //return _sUnitOfwork.users.GetAll();
+        }
+
         //public void Delete(int id)
         //{
         //    _sUnitOfwork.users.Delete(s => s.userID, id);
