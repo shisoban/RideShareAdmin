@@ -26,7 +26,7 @@ namespace  RideshareAdmin.Services
     public interface IRidehistoriesService
     {
         IQueryable<Ridehistories> Get(string i);
-        IEnumerable<Ridehistories> GetAll();
+        IEnumerable<RideHistoriesEntity> GetAll();
         RidesCount GetRidesCount();
     }
 

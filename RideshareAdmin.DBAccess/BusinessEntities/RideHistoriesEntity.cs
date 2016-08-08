@@ -13,6 +13,8 @@ namespace BusinessEntities
         public string userName { get; set; }
         public string driverUserName { get; set; }
         public DateTime requestedTime { get; set; }
+        public string date { get { return requestedTime.ToShortDateString(); } set { } }
+        public string time { get { return requestedTime.ToShortTimeString(); } set { } }
         public int requestStatus { get; set; }
         public string sourseName { get; set; }
         public string destinationName { get; set; }

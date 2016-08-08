@@ -22,14 +22,15 @@ namespace RideshareAdmin.Services
         }
 
         /** Implemantation of get all Ridehistory records */
-        public IEnumerable<Ridehistories> GetAll()
+        public IEnumerable<RideHistoriesEntity> GetAll()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetAll().ToList();
             if (rideHistories.Any())
             {
+               
                 Mapper.CreateMap<Ridehistories, RideHistoriesEntity>();
                 var rideHistoriesModel = Mapper.Map<List<Ridehistories>, List<RideHistoriesEntity>>(rideHistories);
-                return rideHistories;
+                return rideHistoriesModel;
             }
             return null;
         }
@@ -43,5 +44,7 @@ namespace RideshareAdmin.Services
 
             //return _sUnitOfwork.users.GetAll();
         }
+
+
     }
 }
