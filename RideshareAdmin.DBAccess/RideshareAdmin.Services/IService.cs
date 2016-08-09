@@ -28,6 +28,7 @@ namespace  RideshareAdmin.Services
         IQueryable<Ridehistories> Get(string i);
         IEnumerable<RideHistoriesEntity> GetAll();
         TotalDistance GetTotalDistance();
+        DistanceInDateRange GetTotalDistancefilterbyDateRange(DateTime startDate, DateTime endDate);
         RidesCount GetRidesCount();
     }
 

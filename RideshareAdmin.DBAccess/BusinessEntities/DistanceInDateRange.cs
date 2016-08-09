@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessEntities
 {
-    class DistanceInDateRange
+   public class DistanceInDateRange
     {
+        public double distanceInDateRange;
     }
 }
