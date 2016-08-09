@@ -69,6 +69,7 @@ namespace RideshareAdmin.Services
 
         public DistanceInDateRange GetTotalDistancefilterbyDateRange(DateTime startDate, DateTime endDate)
         {
+            
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             double sum = 0;
 
@@ -89,6 +90,29 @@ namespace RideshareAdmin.Services
 
 
         }
+
+        public RideHistoryByMonth GetTotalRidesfilterbyCurrentMonth()
+        {
+            int sMonth = DateTime.Now.Month;
+            var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+            int sum = 0;
+
+            RideHistoryByMonth totalrides = new RideHistoryByMonth();
+
+            foreach (Ridehistories ride in rideHistory)
+            {
+                if (ride.requestStatus == 2 && ride.requestedTime.Month == sMonth)
+                {
+                    sum++;
+                }
+            }
+
+            totalrides.totalRides = sum;
+            return totalrides;
+
+
+        }
+
 
     }
 }
