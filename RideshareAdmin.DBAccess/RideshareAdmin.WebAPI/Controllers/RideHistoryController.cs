@@ -7,6 +7,7 @@ using System.Web.Http;
 using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.Services;
 using BusinessEntities;
+using System.Web.Script.Serialization;
 
 namespace RideshareAdmin.WebAPI.Controllers
 {
@@ -62,7 +63,19 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, list);
 
         }
+        [Route("RidesCountByMonth")]
+        public HttpResponseMessage GetRidesCountByMonth()
+        {
+            IRidehistoriesService ridetotal = new RidehistoriesService();
 
+            RideHistoryByMonth totalrides = ridetotal.GetTotalRidesfilterbyCurrentMonth();
+            if (totalrides != null)
+            {
+               return Request.CreateResponse(HttpStatusCode.OK, totalrides);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
+
+        }
     }
 }
 
