@@ -874,6 +874,7 @@
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Grid\Users.cshtml" />
     <Content Include="Views\Details\UserList.cshtml" />
+    <Content Include="Views\Details\Rides.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
