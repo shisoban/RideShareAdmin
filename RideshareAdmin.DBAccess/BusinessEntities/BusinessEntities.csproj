@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateRange.cs" />
+    <Compile Include="DistanceInDateRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RideHistoriesEntity.cs" />
     <Compile Include="TotalDistance.cs" />
