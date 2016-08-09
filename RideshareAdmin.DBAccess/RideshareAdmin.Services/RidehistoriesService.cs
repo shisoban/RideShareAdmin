@@ -54,7 +54,7 @@ namespace RideshareAdmin.Services
 
             foreach(Ridehistories ride in rideHistory)
             {
-                if (ride.distance != null) { 
+                if (ride.distance != null && ride.requestStatus==2) { 
                 string[] splitstringdistance = ride.distance.Split(null);
                 string stringdistance = splitstringdistance[0];
                 double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
