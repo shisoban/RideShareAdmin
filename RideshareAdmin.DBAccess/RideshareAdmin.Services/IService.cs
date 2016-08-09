@@ -27,6 +27,7 @@ namespace  RideshareAdmin.Services
     {
         IQueryable<Ridehistories> Get(string i);
         IEnumerable<RideHistoriesEntity> GetAll();
+        TotalDistance GetTotalDistance();
         RidesCount GetRidesCount();
     }
 

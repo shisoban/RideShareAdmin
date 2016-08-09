@@ -45,6 +45,27 @@ namespace RideshareAdmin.Services
             //return _sUnitOfwork.users.GetAll();
         }
 
+        public TotalDistance GetTotalDistance()
+        {
+            var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+            double sum = 0;
+
+            TotalDistance totalDistance = new TotalDistance();
+
+            foreach(Ridehistories ride in rideHistory)
+            {
+                if (ride.distance != null) { 
+                string[] splitstringdistance = ride.distance.Split(null);
+                string stringdistance = splitstringdistance[0];
+                double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
+                sum = sum + doubledistance;
+                }
+            }
+            totalDistance.totalDistance = sum;
+            return totalDistance;
+
+
+        }
 
     }
 }
