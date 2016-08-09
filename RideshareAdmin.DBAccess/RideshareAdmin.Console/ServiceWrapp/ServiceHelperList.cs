@@ -8,7 +8,7 @@ using System.Web;
 
 namespace RideshareAdmin.Console.ServiceWrapp
 {
-    public class ServiceHelper
+    public class ServiceHelperList
     {
         public JArray accessservice(string uri)
         {

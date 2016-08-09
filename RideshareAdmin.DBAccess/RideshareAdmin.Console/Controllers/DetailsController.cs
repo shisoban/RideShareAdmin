@@ -32,8 +32,8 @@ namespace RideshareAdmin.Console.Controllers
             ServiceWrapper sw = new ServiceWrapper();
             //var usermodel = sw.GetUsers();
             //ViewBag.Message = "90";
-            UserDetailViewModel vm = new UserDetailViewModel();
-            vm.Users = sw.GetUsers();
+            RideListViewModel vm = new RideListViewModel();
+            vm.RideList = sw.GetRides();
             // vm.Noofkillometer = "234";
             // return View(vm);
             return View(vm);

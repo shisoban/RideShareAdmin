@@ -208,10 +208,12 @@
     <Compile Include="Models\DashboardVIewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RideListViewModel.cs" />
     <Compile Include="Models\UserDetailViewModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceWrapp\ServiceHelper.cs" />
+    <Compile Include="ServiceWrapp\GetUsers.cs" />
+    <Compile Include="ServiceWrapp\ServiceHelperList.cs" />
     <Compile Include="ServiceWrapp\ServiceWrapper.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -889,6 +891,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{18F8856B-1FF9-4F03-8CD5-6B1A91CF5400}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
