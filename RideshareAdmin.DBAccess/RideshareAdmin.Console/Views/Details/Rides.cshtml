@@ -1,9 +1,26 @@
-﻿
+﻿@using RideshareAdmin.Console.AdminLte
+@using RideshareAdmin.Console.Models
+@model RideListViewModel
 @{
     ViewBag.Title = "Rides";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div>
+<div class="input-group-addon date" data-provide="datepicker">
+    <p><b>Start Date</b></p><input type="text" class="form-control" id="fromdate">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
+
+<div class="input-group-addon date" data-provide="datepicker">
+    <p><b>Start Date</b></p><input type="text" class="form-control" id="Enddate">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
+    </div>
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Ride Detials</h3>
@@ -13,6 +30,7 @@
     <div class="box-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
+              
                 <tr>
                     <th>Ride Date</th>
                     <th>Ride Time</th>
@@ -24,45 +42,19 @@
                 </tr>
             </thead>
             <tbody>
-                @*@foreach (var item in Model.Users)
-                {*@
-                    <tr>
-                        <th>2016-07-06</th>
-                        <th>12:25</th>
-                        <th>Sampath</th>
-                        <th>Nishantha</th>
-                        <th>Colombo</th>
-                        <th>Kandy</th>
-                        <th>102Km</th>
+                @foreach (var item in Model.RideList)
+                {
+                     <tr>
+                        <td>@item.date</td>
+                        <td>@item.time</td>
+                        <td>@item.userName</td>
+                        <td> @item.driverUserName</td>
+                         <td>@item.sourseName</td>
+                         <td>@item.destinationName</td>
+                         <th>@item.distance Km</th>
                     </tr>
-                    <tr>
-                        <th>2016-07-06</th>
-                        <th>12:25</th>
-                        <th>Sampath</th>
-                        <th>Nishantha</th>
-                        <th>Colombo</th>
-                        <th>Kandy</th>
-                        <th>102Km</th>
-                    </tr>
-                    <tr>
-                        <th>2016-07-06</th>
-                        <th>12:25</th>
-                        <th>Sampath</th>
-                        <th>Nishantha</th>
-                        <th>Colombo</th>
-                        <th>Kandy</th>
-                        <th>102Km</th>
-                    </tr>
-                    <tr>
-                        <th>2016-07-06</th>
-                        <th>12:25</th>
-                        <th>Sampath</th>
-                        <th>Nishantha</th>
-                        <th>Colombo</th>
-                        <th>Kandy</th>
-                        <th>102Km</th>
-                    </tr>
-                @* } *@
+                }
+
             </tbody>
         </table>
     </div>
