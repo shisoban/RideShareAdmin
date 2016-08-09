@@ -37,12 +37,27 @@ namespace RideshareAdmin.Services
 
         public RidesCount GetRidesCount()
         {
-            var ridesCount = _sUnitOfwork.ridehistories.GetAll().Count();
-            RidesCount count = new RidesCount();
-            count.ridesCount = ridesCount;
-            return count;
+            //var ridesCount = _sUnitOfwork.ridehistories.GetAll().Count();
+            //RidesCount count = new RidesCount();
+            //count.ridesCount = ridesCount;
+            //return count;
 
-            //return _sUnitOfwork.users.GetAll();
+            var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+            int activeRideCount = 0;
+
+            RidesCount rideCountObject = new RidesCount();
+
+            foreach (Ridehistories rideHistoryTable in rideHistory)
+            {
+                if (rideHistoryTable.requestStatus == 2)
+                {
+                    activeRideCount = activeRideCount+1;
+                }
+            }
+
+            rideCountObject.ridesCount = activeRideCount;
+            return rideCountObject;
+
         }
 
         public TotalDistance GetTotalDistance()
