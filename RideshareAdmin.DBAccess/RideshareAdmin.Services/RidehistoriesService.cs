@@ -67,13 +67,15 @@ namespace RideshareAdmin.Services
 
             TotalDistance totalDistance = new TotalDistance();
 
-            foreach(Ridehistories ride in rideHistory)
+            foreach (Ridehistories ride in rideHistory)
             {
-                if (ride.distance != null && ride.requestStatus==2) { 
-                string[] splitstringdistance = ride.distance.Split(null);
-                string stringdistance = splitstringdistance[0];
-                double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
-                sum = sum + doubledistance;
+                if (ride.distance != 0 && ride.requestStatus == 2)
+                {
+                    /* changed due to db change of column from string to double */
+                    //string[] splitstringdistance = ride.distance.Split(null);
+                    //string stringdistance = splitstringdistance[0];
+                    // double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
+                    sum = sum + ride.distance;
                 }
             }
             totalDistance.totalDistance = sum;
@@ -92,12 +94,14 @@ namespace RideshareAdmin.Services
 
             foreach (Ridehistories ride in rideHistory)
             {
-                if (ride.distance != null && ride.requestStatus == 2 && ride.requestedTime>startDate && ride.requestedTime<endDate)
+                if (ride.distance != 0 && ride.requestStatus == 2 && ride.requestedTime>startDate && ride.requestedTime<endDate)
                 {
-                    string[] splitstringdistance = ride.distance.Split(null);
-                    string stringdistance = splitstringdistance[0];
-                    double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
-                    sum = sum + doubledistance;
+                    /* changed due to db change of column from string to double */
+
+                    //string[] splitstringdistance = ride.distance.Split(null);
+                     // string stringdistance = splitstringdistance[0];                  
+                    //double distance = double.Parse(ride.distance, System.Globalization.CultureInfo.InvariantCulture);
+                    sum = sum + ride.distance;
                 }
             }
             totalDistance.distanceInDateRange = sum;

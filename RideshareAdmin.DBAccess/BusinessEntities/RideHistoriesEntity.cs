@@ -18,7 +18,7 @@ namespace BusinessEntities
         public int requestStatus { get; set; }
         public string sourseName { get; set; }
         public string destinationName { get; set; }
-        public string distance { get; set; }
+        public double distance { get; set; }  /* changed due to db change of column from string to double */
         public string sourceLongitude { get; set; }
         public string sourceLatitude { get; set; }
         public string destinationLongitude { get; set; }
