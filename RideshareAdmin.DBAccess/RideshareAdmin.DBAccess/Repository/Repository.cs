@@ -13,9 +13,9 @@ namespace RideshareAdmin.DBAccess.Repository
 {
     public class Repository<T> where T : class
     {
-        private MongoDatabase _database;
-        private string _tableName;
-        private MongoCollection<T> _collection;
+        protected MongoDatabase _database;
+        protected string _tableName;
+        protected MongoCollection<T> _collection;
 
         // constructor to initialise database and table/collection  
         public Repository(MongoDatabase db, string tblName)
