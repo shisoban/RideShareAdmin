@@ -110,6 +110,27 @@ namespace RideshareAdmin.Services
 
         }
 
+        public IEnumerable<RideHistoriesEntity> RideListInDateRange(DateTime startDate, DateTime endDate)
+        {
+           var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+
+           List<Ridehistories> rideListDBModel = new List<Ridehistories>();
+           RideHistoriesEntity rideList = new RideHistoriesEntity();
+
+            foreach (Ridehistories ride in rideHistory)
+            {
+                if (ride.requestStatus == 2 && ride.requestedTime > startDate && ride.requestedTime < endDate)
+                {                  
+                    rideListDBModel.Add(ride);
+                }              
+            }
+
+            Mapper.CreateMap<Ridehistories, RideHistoriesEntity>();
+            var rideHistoriesInDateRange = Mapper.Map<List<Ridehistories>, List<RideHistoriesEntity>>(rideListDBModel);
+            return rideHistoriesInDateRange;
+        }
+
+
         public RideHistoryByMonth GetTotalRidesfilterbyCurrentMonth()
         {
             int sMonth = DateTime.Now.Month;
