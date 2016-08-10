@@ -16,7 +16,7 @@ $(function () {
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels: ["Colombo", "Kandy", "Gampaha", "Kaluthara", "Ambilipitiya", "Narammala", "Galkissa"],
+    labels: ["Colombo", "Kandy", "Gampaha", "Kaluthara", "Embilipitiya", "Narammala", "Galkissa"],
     datasets: [
       {
         label: "Rides",

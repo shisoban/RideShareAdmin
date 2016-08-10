@@ -6,27 +6,40 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
-<div>
-   
+<form method="post" action="@Url.Action("Rides", "Details")">
+    <div>
 
-<div class="input-group-addon date" data-provide="datepicker">
-    <p style="float: left; margin-top: 10px;"><b>Start Date</b></p><input type="text" class="form-control" id="fromdate">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
 
-<div class="input-group-addon date" data-provide="datepicker">
-    <p style="float: left; margin-top: 10px;"><b>Start Date</b></p><input type="text" class="form-control" id="Enddate">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
+        <div class="input-group-addon date" data-provide="datepicker">
+            <p style="float: left; margin-top: 10px;"><b>Start Date</b></p>
+            @*<input type="text" class="form-control" id="fromdate">*@
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+                @Html.TextBoxFor(m => m.enddate)
+            </div>
+        </div>
+
+        <div class="input-group-addon date" data-provide="datepicker">
+            <p style="float: left; margin-top: 10px;"><b>Start Date</b></p>
+            @*<input type="text" class="form-control" id="Enddate">*@
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th"></span>
+                @Html.TextBoxFor(m => m.startdate)
+
+            </div>
+
+        </div>
+        <input type="submit" value="Go" class="btn btn-success" />
     </div>
-</div>
-    </div>
+
+
+</form>
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Ride Detials</h3>
+      
     </div>
+    
     <!-- /.box-header -->
 
     <div class="box-body">

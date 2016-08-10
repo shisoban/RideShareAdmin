@@ -27,13 +27,17 @@ namespace RideshareAdmin.Console.Controllers
             // return View(vm);
             return View(vm);
         }
-        public ActionResult Rides()
+
+
+        
+        public ActionResult Rides(RideListViewModel ridelistvm)
         {
             ServiceWrapper sw = new ServiceWrapper();
             //var usermodel = sw.GetUsers();
             //ViewBag.Message = "90";
             RideListViewModel vm = new RideListViewModel();
-            vm.RideList = sw.GetRides();
+            //var p = sw.GetRidesDatarange();
+            vm.RideList = sw.GetRidesDatarange(vm.startdate, vm.enddate);
             // vm.Noofkillometer = "234";
             // return View(vm);
             return View(vm);

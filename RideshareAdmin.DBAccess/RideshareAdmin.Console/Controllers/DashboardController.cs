@@ -24,5 +24,15 @@ namespace RideshareAdmin.Console.Controllers
             return View(vm);
            
         }
+        public ActionResult TestCharts()
+        {
+            //DashboardStatics chartdata = sw.GetNumberstatics();
+            //ViewBag.Message = "90";
+            //   DashboardVIewModel vm = new DashboardVIewModel();
+            // vm.Noofkillometer = "234";
+            //  vm.Noofusers = chartdata.noofusers;
+            return View();//(vm);
+
+        }
     }
 }

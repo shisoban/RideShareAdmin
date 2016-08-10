@@ -4,11 +4,15 @@ using Newtonsoft.Json.Linq;
 using RideshareAdmin.Console.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Script.Serialization;
 
 namespace RideshareAdmin.Console.ServiceWrapp
 {
@@ -100,11 +104,10 @@ namespace RideshareAdmin.Console.ServiceWrapp
                 ridehistory.driverUserName = serviceh[i]["driverUserName"].ToString();
                 ridehistory.sourseName = serviceh[i]["sourseName"].ToString();
                 ridehistory.destinationName = serviceh[i]["destinationName"].ToString();
-                ridehistory.destinationName = serviceh[i]["sourseName"].ToString();
                 ridehistory.requestedTime = DateTime.Parse(serviceh[i]["requestedTime"].ToString());
                 ridehistory.time = serviceh[i]["time"].ToString();
                 ridehistory.date = serviceh[i]["date"].ToString();
-                ridehistory.distance = serviceh[i]["distance"].ToString();
+                ridehistory.distance = double.Parse(serviceh[i]["distance"].ToString());
                 //__V = v[i]["veh_description"].ToString();
                 //email = v[i]["veh_location"].ToString();
                 ridelist.Add(ridehistory);
@@ -198,7 +201,57 @@ namespace RideshareAdmin.Console.ServiceWrapp
             //    }
             //    return dasbordstatics;
             }
-       
+
+        public  List<RideHistoriesEntity> GetRidesDatarange(string startdate, string enddate)
+        {
+            
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51074/api/DistanceInDateRange");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = new JavaScriptSerializer().Serialize(new
+                {
+                    start_date = "2016-07-01 10:12:25.416Z",
+                    end_date = "2016-07-31 10:12:25.416Z"
+                });
+
+                streamWriter.Write(json);
+            }
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+            }
+
+
+            string uri2 = baseUri+ "/rideHistory";
+
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var serviceh = servicehelper.accessservice(uri2);
+            // DashboardStatics dasbordstatics = new DashboardStatics();
+            RideHistoriesEntity ridehistory;
+            List<RideHistoriesEntity> ridelist = new List<RideHistoriesEntity>();
+
+            for (int i = 0; i < serviceh.Count; i++)
+            {
+                ridehistory = new RideHistoriesEntity();
+
+                ridehistory.userName = serviceh[i]["userName"].ToString();
+                ridehistory.driverUserName = serviceh[i]["driverUserName"].ToString();
+                ridehistory.sourseName = serviceh[i]["sourseName"].ToString();
+                ridehistory.destinationName = serviceh[i]["destinationName"].ToString();
+                ridehistory.requestedTime = DateTime.Parse(serviceh[i]["requestedTime"].ToString());
+                ridehistory.time = serviceh[i]["time"].ToString();
+                ridehistory.date = serviceh[i]["date"].ToString();
+                ridehistory.distance = double.Parse(serviceh[i]["distance"].ToString());
+                ridelist.Add(ridehistory);
+            }
+            return ridelist;
+
+        }
     }
 
 

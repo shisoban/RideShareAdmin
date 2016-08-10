@@ -877,6 +877,7 @@
     <Content Include="Views\Grid\Users.cshtml" />
     <Content Include="Views\Details\UserList.cshtml" />
     <Content Include="Views\Details\Rides.cshtml" />
+    <Content Include="Views\Dashboard\TestCharts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
