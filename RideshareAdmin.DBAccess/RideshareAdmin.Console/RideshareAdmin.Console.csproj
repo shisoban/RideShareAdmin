@@ -307,6 +307,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\AdminLTE\app.js" />
     <Content Include="Scripts\AdminLTE\app.min.js" />
+    <Content Include="Scripts\AdminLTE\Chart.bundle.js" />
     <Content Include="Scripts\AdminLTE\demo.js" />
     <Content Include="Scripts\AdminLTE\pages\dashboard.js" />
     <Content Include="Scripts\AdminLTE\pages\dashboard2.js" />
