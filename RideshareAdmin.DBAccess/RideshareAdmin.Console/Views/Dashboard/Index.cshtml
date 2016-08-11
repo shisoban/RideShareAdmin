@@ -42,7 +42,7 @@
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-child"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">No Of Riders</span>
+                <span class="info-box-text">No Of Users</span>
                 <span class="info-box-number">@Model.Noofusers</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
@@ -105,9 +105,9 @@
                         </p>
                         <div class="progress-group">
                             <span class="progress-text">Reach to Monthly Goal</span>
-                            <span class="progress-number"><b>160</b>/200</span>
+                            <span class="progress-number"><b>@Model.CountCurrentMonthRide</b>/200</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-aqua" style="width: @(Model.CountCurrentMonthRide)%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
