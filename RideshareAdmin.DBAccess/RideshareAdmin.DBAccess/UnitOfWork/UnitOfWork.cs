@@ -10,9 +10,18 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
 
         private MongoDatabase _database1;
         private MongoDatabase _database2;
-        protected Repository<User> _user;
-        protected Repository<Usercoordinate> _usercoordinate;
-        protected Repository<Ridehistories> _ridehistories;
+
+        ////////////////Generic Repositiry////////////////
+        //protected Repository<User> _user;
+        //protected Repository<Usercoordinate> _usercoordinate;
+        //protected Repository<Ridehistories> _ridehistories;
+        //////////////////////////////////////////////////
+
+        protected UserRepository<User> _user;
+        protected UsercoordinatesRepository<Usercoordinate> _usercoordinate;
+        protected RideHistoryRepository<Ridehistories> _ridehistories;
+
+
 
         public UnitOfWork()
         {
@@ -28,38 +37,78 @@ namespace RideshareAdmin.DBAccess.UnitOfWork
             var databaseName2 = ConfigurationManager.AppSettings["MongoDBDatabaseName2"];
             _database2 = server.GetDatabase(databaseName2);
         }
-        public Repository<User> users
+
+        //////////////////////////////////Generic Repository////////////////////////////////////////////
+
+        //public Repository<User> users
+        //{
+        //    get
+        //    {
+        //        if (_user == null)
+        //            _user = new Repository<User>(_database1, "users");
+
+        //        return _user;
+        //    }
+        //}
+
+        //public Repository<Usercoordinate> usercoordinates
+        //{
+        //    get
+        //    {
+        //        if (_usercoordinate == null)
+        //            _usercoordinate = new Repository<Usercoordinate>(_database2, "usercoordinates");
+
+        //        return _usercoordinate;
+        //    }
+        //}
+
+        //public Repository<Ridehistories> ridehistories
+        //{
+        //    get
+        //    {
+        //        if (_ridehistories == null)
+        //            _ridehistories = new Repository<Ridehistories>(_database2, "ridehistories");
+
+        //        return _ridehistories;
+        //    }
+        //}
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        public UserRepository<User> users
         {
             get
             {
                 if (_user == null)
-                    _user = new Repository<User>(_database1, "users");
+                    _user = new UserRepository<User>(_database1, "users");
 
                 return _user;
             }
         }
 
-        public Repository<Usercoordinate> usercoordinates
+        public UsercoordinatesRepository<Usercoordinate> usercoordinates
         {
             get
             {
                 if (_usercoordinate == null)
-                    _usercoordinate = new Repository<Usercoordinate>(_database2, "usercoordinates");
+                    _usercoordinate = new UsercoordinatesRepository<Usercoordinate>(_database2, "usercoordinates");
 
                 return _usercoordinate;
             }
         }
 
-        public Repository<Ridehistories> ridehistories
+        public RideHistoryRepository<Ridehistories> ridehistories
         {
             get
             {
                 if (_ridehistories == null)
-                    _ridehistories = new Repository<Ridehistories>(_database2, "ridehistories");
+                    _ridehistories = new RideHistoryRepository<Ridehistories>(_database2, "ridehistories");
 
                 return _ridehistories;
             }
         }
+
 
     }
 }
