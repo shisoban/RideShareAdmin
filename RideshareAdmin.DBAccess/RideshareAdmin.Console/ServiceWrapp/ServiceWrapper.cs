@@ -161,6 +161,15 @@ namespace RideshareAdmin.Console.ServiceWrapp
             return co2Reduction;
         }
 
+        public string GetTotalCO2Reducation()
+        {
+            string uri = baseUri + "/TotalDistance/Totalemission ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var co2ReductObject = servicehelper.accessserviceAsObject(uri);
+            var co2Reduction = co2ReductObject["emission"].ToString();
+            return co2Reduction;
+        }
+
 
         public static async Task RunAsync()
         {
