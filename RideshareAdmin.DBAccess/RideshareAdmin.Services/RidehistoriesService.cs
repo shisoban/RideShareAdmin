@@ -17,7 +17,7 @@ namespace RideshareAdmin.Services
     {
         private readonly UnitOfWork _sUnitOfwork = new UnitOfWork();
 
-        
+
 
         /** Implemantation of get one Ridehistory records */
         public IQueryable<Ridehistories> Get(string i)
@@ -32,7 +32,7 @@ namespace RideshareAdmin.Services
             var rideHistories = _sUnitOfwork.ridehistories.GetAll().ToList();
             if (rideHistories.Any())
             {
-               
+
                 Mapper.CreateMap<Ridehistories, RideHistoriesEntity>();
                 var rideHistoriesModel = Mapper.Map<List<Ridehistories>, List<RideHistoriesEntity>>(rideHistories);
                 return rideHistoriesModel;
@@ -56,7 +56,7 @@ namespace RideshareAdmin.Services
             {
                 if (rideHistoryTable.requestStatus == 2)
                 {
-                    activeRideCount = activeRideCount+1;
+                    activeRideCount = activeRideCount + 1;
                 }
             }
 
@@ -91,7 +91,7 @@ namespace RideshareAdmin.Services
 
         public DistanceInDateRange GetTotalDistancefilterbyDateRange(DateTime startDate, DateTime endDate)
         {
-            
+
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             double sum = 0;
 
@@ -99,12 +99,12 @@ namespace RideshareAdmin.Services
 
             foreach (Ridehistories ride in rideHistory)
             {
-                if (ride.distance != 0 && ride.requestStatus == 2 && ride.requestedTime>startDate && ride.requestedTime<endDate)
+                if (ride.distance != 0 && ride.requestStatus == 2 && ride.requestedTime > startDate && ride.requestedTime < endDate)
                 {
                     /* changed due to db change of column from string to double */
 
                     //string[] splitstringdistance = ride.distance.Split(null);
-                     // string stringdistance = splitstringdistance[0];                  
+                    // string stringdistance = splitstringdistance[0];                  
                     //double distance = double.Parse(ride.distance, System.Globalization.CultureInfo.InvariantCulture);
                     sum = sum + ride.distance;
                 }
@@ -117,17 +117,17 @@ namespace RideshareAdmin.Services
 
         public IEnumerable<RideHistoriesEntity> RideListInDateRange(DateTime startDate, DateTime endDate)
         {
-           var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+            var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
 
-           List<Ridehistories> rideListDBModel = new List<Ridehistories>();
-           RideHistoriesEntity rideList = new RideHistoriesEntity();
+            List<Ridehistories> rideListDBModel = new List<Ridehistories>();
+            RideHistoriesEntity rideList = new RideHistoriesEntity();
 
             foreach (Ridehistories ride in rideHistory)
             {
                 if (ride.requestStatus == 2 && ride.requestedTime > startDate && ride.requestedTime < endDate)
-                {                  
+                {
                     rideListDBModel.Add(ride);
-                }              
+                }
             }
 
             Mapper.CreateMap<Ridehistories, RideHistoriesEntity>();
@@ -154,7 +154,7 @@ namespace RideshareAdmin.Services
 
             totalrides.totalRides = sum;
             return totalrides;
-            
+
         }
 
         public IEnumerable<RidesByLocationDetailEntity> GetRidesByLocation()
@@ -188,7 +188,7 @@ namespace RideshareAdmin.Services
 
             var totalDistance = sum;
             Emission emission = new Emission();
-            emission.emission = ((totalDistance * 130)/1000);
+            emission.emission = ((totalDistance * 130) / 1000);
 
             return emission;
 
@@ -209,4 +209,5 @@ namespace RideshareAdmin.Services
             }
 
         }
+    }
 }
