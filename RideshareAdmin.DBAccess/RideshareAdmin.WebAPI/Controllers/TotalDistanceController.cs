@@ -39,5 +39,21 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
 
         }
+
+
+
+        [Route("Totalemission")]
+        public HttpResponseMessage GetTotalemission()
+        {
+            //IRidehistoriesService ridedetail = new RidehistoriesService();
+
+            Emission emission = _ridehistoriesService.GetTotalEmission();
+            if (emission != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, emission);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
+
+        }
     }
 }

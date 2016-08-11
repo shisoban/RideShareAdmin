@@ -209,5 +209,17 @@ namespace RideshareAdmin.Services
             }
 
         }
+
+        public Emission GetTotalEmission()
+        {
+
+            var totalDistance = GetTotalDistance().totalDistance;
+            Emission emission = new Emission();
+            emission.emission = ((totalDistance * 130) / 1000);
+
+            return emission;
+
+
+        }
     }
 }
