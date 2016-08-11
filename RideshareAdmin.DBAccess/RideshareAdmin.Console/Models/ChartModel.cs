@@ -11,5 +11,6 @@ namespace RideshareAdmin.Console.Models
     public class DashboardStatics
     {
         public string noofusers { get; set; }
+        public string currentMonthRideCount { get; set; }
     }
 }

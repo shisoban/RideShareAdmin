@@ -142,6 +142,17 @@ namespace RideshareAdmin.Console.ServiceWrapp
         }
 
 
+        public string GetCurrentMonthRideCount()
+        {
+            // http://localhost:51074/api/user/Countuser
+            string uri = baseUri + "/rideHistory/RidesCountByMonth";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var countAsObject = servicehelper.accessserviceAsObject(uri);
+            var countCurrentMonth = countAsObject["totalRides"].ToString();
+            return countCurrentMonth;
+        }
+
+
         public static async Task RunAsync()
         {
             using (var client = new HttpClient())
