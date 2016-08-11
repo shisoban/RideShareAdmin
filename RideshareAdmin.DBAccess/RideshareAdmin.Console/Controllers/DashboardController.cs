@@ -21,6 +21,7 @@ namespace RideshareAdmin.Console.Controllers
             DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
             vm.Noofusers = chartdata.noofusers;
+            vm.CountCurrentMonthRide = sw.GetCurrentMonthRideCount();
             return View(vm);
            
         }

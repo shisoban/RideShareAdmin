@@ -20,5 +20,17 @@ namespace RideshareAdmin.Console.ServiceWrapp
                 return v;
             }
         }
-    }
+
+        public JObject accessserviceAsObject(string uri)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                Task<String> response = httpClient.GetStringAsync(uri);
+                var result = response.ToString();
+                JObject v = JObject.Parse(response.Result);
+                return v;
+            }
+        }
+
+    }   
 }
