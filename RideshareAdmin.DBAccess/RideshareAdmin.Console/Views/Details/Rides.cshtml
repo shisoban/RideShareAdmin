@@ -5,7 +5,6 @@
     ViewBag.Title = "Rides";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <form method="post" action="@Url.Action("Rides", "Details")">
     <div>
 
@@ -15,7 +14,7 @@
             @*<input type="text" class="form-control" id="fromdate">*@
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
-                @Html.TextBoxFor(m => m.enddate)
+                <input type="text" name="startdate" />
             </div>
         </div>
 
@@ -24,12 +23,13 @@
             @*<input type="text" class="form-control" id="Enddate">*@
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th"></span>
-                @Html.TextBoxFor(m => m.startdate)
+                <input type="text" name="endate" />
 
             </div>
 
+
         </div>
-        <input type="submit" value="Go" class="btn btn-success" />
+        <input type="submit" value="Go" class="btn btn-success"/>
     </div>
 
 
@@ -37,15 +37,15 @@
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Ride Detials</h3>
-      
+
     </div>
-    
+
     <!-- /.box-header -->
 
     <div class="box-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="RideDetailTable" class="table table-bordered table-striped">
             <thead>
-              
+
                 <tr>
                     <th>Ride Date</th>
                     <th>Ride Time</th>
@@ -59,14 +59,14 @@
             <tbody>
                 @foreach (var item in Model.RideList)
                 {
-                     <tr>
+                    <tr>
                         <td>@item.date</td>
                         <td>@item.time</td>
                         <td>@item.userName</td>
-                        <td> @item.driverUserName</td>
-                         <td>@item.sourseName</td>
-                         <td>@item.destinationName</td>
-                         <th>@item.distance Km</th>
+                        <td>@item.driverUserName</td>
+                        <td>@item.sourseName</td>
+                        <td>@item.destinationName</td>
+                        <th>@item.distance Km</th>
                     </tr>
                 }
 
@@ -75,4 +75,18 @@
     </div>
     <!-- /.box-body -->
 </div>
+
+
+@section scripts
+{
+    <script src="~/Scripts/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#RideDetailTable").DataTable();
+        });
+    </script>
+
+}
 

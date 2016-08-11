@@ -34,7 +34,7 @@ namespace RideshareAdmin.Console.ServiceWrapp
 
         public List<UserModel> GetUsers()
         {
-            string uri = baseUri + "api/user";
+            string uri = baseUri + "/user";
             //string uri = baseUri;
 
             ServiceHelperList servicehelper = new ServiceHelperList();
