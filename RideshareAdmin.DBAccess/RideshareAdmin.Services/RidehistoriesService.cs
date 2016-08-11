@@ -170,5 +170,22 @@ namespace RideshareAdmin.Services
             return null;
 
         }
+
+        /** */
+        public IEnumerable<RideCountByDriveDetailEntity> GetRideCountByDrivers()
+        {           
+            var rideHistories = _sUnitOfwork.ridehistories.GetRideCountByDriver().ToList();
+            List<RideCountByDriverEntity> returnValue = new List<RideCountByDriverEntity>();
+            returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<RideCountByDriverEntity>(x)));
+            {
+                Mapper.CreateMap<RideCountByDriverEntity, RideCountByDriveDetailEntity>();
+                var usersModel = Mapper.Map<List<RideCountByDriverEntity>, List<RideCountByDriveDetailEntity>>(returnValue);
+
+                return usersModel;
+            }
+            
+        }
+
+
     }
 }

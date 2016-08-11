@@ -76,5 +76,63 @@ namespace RideshareAdmin.DBAccess.Repository
 
         }
 
+        /** This method is for getting number of riders of each Driver
+         *
+         */
+        public List<BsonDocument> GetRideCountByDriver()
+        {
+            var match1 = new BsonDocument
+                {
+                    {
+                        "$match",
+                        new BsonDocument
+                            {
+                                {"requestStatus", 2}
+                            }
+                    }
+                };
+
+            var group = new BsonDocument
+                          {
+                              { "$group",
+                                  new BsonDocument
+                                      {
+                                          { "_id", new BsonDocument
+                                                       {
+                                                           {
+                                                               "driverUserName","$driverUserName"
+                                                           }
+                                                       }
+                                          },
+                                          {
+                                              "noOfRidesByDriver", new BsonDocument
+                                                           {
+                                                               {
+                                                                   "$sum", 1
+                                                               }
+                                                           }
+                                          }
+                                      }
+                            }
+                          };
+
+            /*var sort = new BsonDocument
+                {
+                    {
+                        "$sort",
+                        new BsonDocument
+                            {
+                                {"$noOfRidesByDriver"}
+                            }
+                    }
+                };
+                */
+            var pipeline = new[] { match1, group  };
+            var args = new AggregateArgs { Pipeline = pipeline };
+            var result = _collection.Aggregate(args).ToList();
+            return result;
+
+        }
+
     }
 }

@@ -63,6 +63,7 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, list);
 
         }
+
         [Route("RidesCountByMonth")]
         public HttpResponseMessage GetRidesCountByMonth()
         {
@@ -76,6 +77,7 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
 
         }
+
         [Route("RidesByLocation")]
         public HttpResponseMessage GetAllByLocation()
         {
@@ -87,6 +89,15 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
 
         }
+
+        [Route("NoOfRidesByDrivers")]
+        public HttpResponseMessage GetRideCountByDrivers()
+        {           
+            var rideHistories = _ridehistoriesService.GetRideCountByDrivers().ToList();            
+            return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
+
+        }
+
     }
 }
 
