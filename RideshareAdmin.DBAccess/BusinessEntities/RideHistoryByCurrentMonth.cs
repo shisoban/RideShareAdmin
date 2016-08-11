@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessEntities
 {
-    public class RideHistoryByMonth
+    public class RideHistoryByCurrentMonth
     {
         public int totalRides { get; set; }
        

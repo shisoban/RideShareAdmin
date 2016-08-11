@@ -68,12 +68,23 @@ namespace RideshareAdmin.WebAPI.Controllers
         {
             IRidehistoriesService ridetotal = new RidehistoriesService();
 
-            RideHistoryByMonth totalrides = ridetotal.GetTotalRidesfilterbyCurrentMonth();
+            RideHistoryByCurrentMonth totalrides = ridetotal.GetTotalRidesfilterbyCurrentMonth();
             if (totalrides != null)
             {
                return Request.CreateResponse(HttpStatusCode.OK, totalrides);
             }
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
+
+        }
+        [Route("RidesByLocation")]
+        public HttpResponseMessage GetAllByLocation()
+        {
+            var rideHistories = _ridehistoriesService.GetRidesByLocation().ToList();
+            // var userEntities = users as List<RideL> ?? rideHistories.ToList();
+            // if (rideHistories.Any())
+            //List<RideLocation> list = new List<RideLocation>();
+            // list.Add(rideHistories);
+            return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
 
         }
     }

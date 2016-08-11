@@ -7,12 +7,17 @@ using RideshareAdmin.DBAccess.Models;
 using RideshareAdmin.DBAccess.UnitOfWork;
 using AutoMapper;
 using BusinessEntities;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+
 
 namespace RideshareAdmin.Services
 {
     public class RidehistoriesService : IRidehistoriesService
     {
         private readonly UnitOfWork _sUnitOfwork = new UnitOfWork();
+
+        
 
         /** Implemantation of get one Ridehistory records */
         public IQueryable<Ridehistories> Get(string i)
@@ -131,13 +136,13 @@ namespace RideshareAdmin.Services
         }
 
 
-        public RideHistoryByMonth GetTotalRidesfilterbyCurrentMonth()
+        public RideHistoryByCurrentMonth GetTotalRidesfilterbyCurrentMonth()
         {
             int sMonth = DateTime.Now.Month;
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             int sum = 0;
 
-            RideHistoryByMonth totalrides = new RideHistoryByMonth();
+            RideHistoryByCurrentMonth totalrides = new RideHistoryByCurrentMonth();
 
             foreach (Ridehistories ride in rideHistory)
             {
@@ -149,10 +154,21 @@ namespace RideshareAdmin.Services
 
             totalrides.totalRides = sum;
             return totalrides;
-
-
+            
         }
 
+        public IEnumerable<RidesByLocationDetailEntity> GetRidesByLocation()
+        {
+            var rideHistories = _sUnitOfwork.ridehistories.GetAllByLocation().ToList();
+            List<RidesByLocationEntity> returnValue = new List<RidesByLocationEntity>();
+            returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<RidesByLocationEntity>(x)));
+            {
+                Mapper.CreateMap<RidesByLocationEntity, RidesByLocationDetailEntity>();
+                var usersModel = Mapper.Map<List<RidesByLocationEntity>, List<RidesByLocationDetailEntity>>(returnValue);
+                return usersModel;
+            }
+            return null;
 
+        }
     }
 }
