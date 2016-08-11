@@ -195,7 +195,7 @@ namespace RideshareAdmin.Services
 
         }
 
-        /** */
+        /** This method for to get the ride count of each user*/
         public IEnumerable<RideCountByDriveDetailEntity> GetRideCountByDrivers()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetRideCountByDriver().ToList();
