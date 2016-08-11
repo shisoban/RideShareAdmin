@@ -107,14 +107,14 @@
                             <span class="progress-text">Reach to Monthly Goal</span>
                             <span class="progress-number"><b>@Model.CountCurrentMonthRide</b>/200</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-aqua" style="width: @(Model.CountCurrentMonthRide)%"></div>
+                                <div class="progress-bar progress-bar-aqua" style="width: @(Model.CountCurrentMonthRidePercentage)%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
                             <span class="progress-text">CO2 Reducation Goal</span>
-                            <span class="progress-number"><b>310</b>/400</span>
+                            <span class="progress-number"><b>@Model.CurrentMonthCO2Reduction</b>/400</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-red" style="width: @(Model.CurrentMonthCO2ReductionPercentage)%"></div>
                             </div>
                         </div>
                     </div><!-- /.col -->

@@ -17,11 +17,11 @@ namespace RideshareAdmin.Console.Controllers
         public ActionResult Index()
         {
             DashboardStatics chartdata = sw.GetNumberstatics();
-        //ViewBag.Message = "90";
             DashboardVIewModel vm = new DashboardVIewModel();
             vm.Noofkillometer = "234";
             vm.Noofusers = chartdata.noofusers;
             vm.CountCurrentMonthRide = sw.GetCurrentMonthRideCount();
+            vm.CurrentMonthCO2Reduction = sw.GetCurrentMonthCO2Reducation();
             return View(vm);
            
         }
