@@ -188,7 +188,7 @@ namespace RideshareAdmin.Services
 
             var totalDistance = sum;
             Emission emission = new Emission();
-            emission.emission = (totalDistance * 130);
+            emission.emission = ((totalDistance * 130)/1000);
 
             return emission;
 
