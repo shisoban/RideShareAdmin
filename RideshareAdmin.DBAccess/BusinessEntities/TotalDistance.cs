@@ -10,4 +10,9 @@ namespace BusinessEntities
     {
        public double totalDistance { get; set; }
     }
+
+    public class Emission
+    {
+        public double emission { get; set; }
+    }
 }

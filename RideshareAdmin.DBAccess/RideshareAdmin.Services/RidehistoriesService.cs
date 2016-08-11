@@ -170,5 +170,31 @@ namespace RideshareAdmin.Services
             return null;
 
         }
+        public Emission GetEmission()
+        {
+
+            var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
+            double sum = 0;
+
+            //TotalDistance totalDistance = new TotalDistance();
+            int sMonth = DateTime.Now.Month;
+            foreach (var ride in rideHistory)
+            {
+                if (ride.distance != 0 && ride.requestStatus == 2 && ride.requestedTime.Month == sMonth)
+                {
+                    sum = sum + ride.distance;
+                }
+            }
+
+            var totalDistance = sum;
+            Emission emission = new Emission();
+            emission.emission = (totalDistance * 130);
+
+            return emission;
+
+
+        }
+
+
     }
 }
