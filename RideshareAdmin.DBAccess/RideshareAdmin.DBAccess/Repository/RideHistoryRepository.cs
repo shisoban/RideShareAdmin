@@ -69,17 +69,25 @@ namespace RideshareAdmin.DBAccess.Repository
 
                             }
                           };
-//            var sort = new BsonDocument {
-//    {
-//        "$sort",
-//        new BsonDocument {
-//            { "totalView", -1 }
-//        }
-//    }
-//};
-            //    $sort: { "cars_owned" : -1}
-            //}, {$limit : 10}
-            var pipeline = new[] { group };
+            var sort = new BsonDocument {
+                    {
+                      "$sort",
+                             new BsonDocument
+                             {
+                                             { "noOfUsersByLocation", -1 }
+                             }
+                    }
+                    
+                };
+            var limit = new BsonDocument {
+                    {
+                      "$limit",10
+                            
+                    }
+
+                };
+           
+            var pipeline = new[] { group,sort,limit };
             var args = new AggregateArgs { Pipeline = pipeline };
             var result = _collection.Aggregate(args).ToList();
             return result;
