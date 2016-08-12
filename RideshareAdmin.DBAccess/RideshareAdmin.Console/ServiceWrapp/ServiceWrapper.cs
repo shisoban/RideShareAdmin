@@ -205,7 +205,7 @@ namespace RideshareAdmin.Console.ServiceWrapp
         public  List<RideHistoriesEntity> GetRidesDatarange(string startdate, string enddate)
         {
             
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:51074/api/DistanceInDateRange");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(baseUri+"/RideListInDateRange");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
@@ -213,40 +213,42 @@ namespace RideshareAdmin.Console.ServiceWrapp
             {
                 string json = new JavaScriptSerializer().Serialize(new
                 {
-                    start_date = "2016-07-01 10:12:25.416Z",
-                    end_date = "2016-07-31 10:12:25.416Z"
+                    start_date = startdate,
+                    end_date = enddate
                 });
 
                 streamWriter.Write(json);
             }
-
+            string resultset;
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 var result = streamReader.ReadToEnd();
+                resultset = result.ToString(); ;
+
             }
 
+            JArray outputarray = JArray.Parse(resultset);
+            //string uri2 = baseUri+ "/rideHistory";
 
-            string uri2 = baseUri+ "/rideHistory";
-
-            ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri2);
+            //ServiceHelperList servicehelper = new ServiceHelperList();
+            //var serviceh = servicehelper.accessservice(uri2);
             // DashboardStatics dasbordstatics = new DashboardStatics();
             RideHistoriesEntity ridehistory;
             List<RideHistoriesEntity> ridelist = new List<RideHistoriesEntity>();
 
-            for (int i = 0; i < serviceh.Count; i++)
+            for (int i = 0; i < outputarray.Count; i++)
             {
                 ridehistory = new RideHistoriesEntity();
 
-                ridehistory.userName = serviceh[i]["userName"].ToString();
-                ridehistory.driverUserName = serviceh[i]["driverUserName"].ToString();
-                ridehistory.sourseName = serviceh[i]["sourseName"].ToString();
-                ridehistory.destinationName = serviceh[i]["destinationName"].ToString();
-                ridehistory.requestedTime = DateTime.Parse(serviceh[i]["requestedTime"].ToString());
-                ridehistory.time = serviceh[i]["time"].ToString();
-                ridehistory.date = serviceh[i]["date"].ToString();
-                ridehistory.distance = double.Parse(serviceh[i]["distance"].ToString());
+                ridehistory.userName = outputarray[i]["userName"].ToString();
+                ridehistory.driverUserName = outputarray[i]["driverUserName"].ToString();
+                ridehistory.sourseName = outputarray[i]["sourseName"].ToString();
+                ridehistory.destinationName = outputarray[i]["destinationName"].ToString();
+                ridehistory.requestedTime = DateTime.Parse(outputarray[i]["requestedTime"].ToString());
+                ridehistory.time = outputarray[i]["time"].ToString();
+                ridehistory.date = outputarray[i]["date"].ToString();
+                ridehistory.distance = double.Parse(outputarray[i]["distance"].ToString());
                 ridelist.Add(ridehistory);
             }
             return ridelist;

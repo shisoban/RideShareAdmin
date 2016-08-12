@@ -37,7 +37,9 @@ namespace RideshareAdmin.Console.Controllers
             //ViewBag.Message = "90";
             RideListViewModel vm = new RideListViewModel();
             //var p = sw.GetRidesDatarange();
-            vm.RideList = sw.GetRides();
+            string startdate = Convert.ToDateTime(System.DateTime.Today.AddDays(-30)).ToString("yyyy-MM-dd");
+            string enddate = Convert.ToDateTime(System.DateTime.Today).ToString("yyyy-MM-dd"); 
+            vm.RideList = sw.GetRidesDatarange(startdate, enddate);
             // vm.Noofkillometer = "234";
             // return View(vm);
             return View(vm);
@@ -51,6 +53,8 @@ namespace RideshareAdmin.Console.Controllers
             RideListViewModel vm = new RideListViewModel();
             //var p = sw.GetRidesDatarange();
             
+            string strUtcTime_startdate = Convert.ToDateTime(startdate).ToString("yyyy-MM-dd");
+            string strUtcTime_enddate   = Convert.ToDateTime(endate).ToString("yyyy-MM-dd");
             vm.RideList = sw.GetRidesDatarange(startdate, endate);
             // vm.Noofkillometer = "234";
             // return View(vm);

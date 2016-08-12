@@ -1010,7 +1010,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_AdminBreadcrumb.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutOLD.cshtml" />
     <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
     <Content Include="Views\Shared\_AdminTopMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
@@ -1020,8 +1020,9 @@
     <Content Include="Views\Grid\Users.cshtml" />
     <Content Include="Views\Details\UserList.cshtml" />
     <Content Include="Views\Details\Rides.cshtml" />
-    <Content Include="Views\Dashboard\TestCharts.cshtml" />
     <Content Include="Views\Details\test.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Dashboard\TestCharts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
