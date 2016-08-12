@@ -157,9 +157,10 @@ namespace RideshareAdmin.Services
 
         }
 
+        //
         public IEnumerable<RidesByLocationDetailEntity> GetRidesByLocation()
         {
-            var rideHistories = _sUnitOfwork.ridehistories.GetAllByLocation().ToList();
+            var rideHistories = _sUnitOfwork.ridehistories.GetRidesCountByLocation().ToList();
             List<RidesByLocationEntity> returnValue = new List<RidesByLocationEntity>();
             returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<RidesByLocationEntity>(x)));
             {
@@ -167,16 +168,16 @@ namespace RideshareAdmin.Services
                 var usersModel = Mapper.Map<List<RidesByLocationEntity>, List<RidesByLocationDetailEntity>>(returnValue);
                 return usersModel;
             }
-            return null;
-
+           
         }
+
+        //Get Emission for current Month
         public Emission GetEmission()
         {
 
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             double sum = 0;
-
-            //TotalDistance totalDistance = new TotalDistance();
+            
             int sMonth = DateTime.Now.Month;
             foreach (var ride in rideHistory)
             {
@@ -204,21 +205,19 @@ namespace RideshareAdmin.Services
             {
                 Mapper.CreateMap<RideCountByDriverEntity, RideCountByDriveDetailEntity>();
                 var usersModel = Mapper.Map<List<RideCountByDriverEntity>, List<RideCountByDriveDetailEntity>>(returnValue);
-
                 return usersModel;
             }
 
         }
 
+        //Total Emission for Total Rides
         public Emission GetTotalEmission()
         {
 
             var totalDistance = GetTotalDistance().totalDistance;
             Emission emission = new Emission();
             emission.emission = ((totalDistance * 130) / 1000);
-
             return emission;
-
 
         }
 
@@ -226,6 +225,7 @@ namespace RideshareAdmin.Services
         public IEnumerable<GetDistanceByMonthDetailEntity> GetDistanceByMonth()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetDistanceByMonth().ToList();
+
             List<GetDistanceByMonthEntity> returnValue = new List<GetDistanceByMonthEntity>();
             returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<GetDistanceByMonthEntity>(x)));
             {
@@ -235,5 +235,19 @@ namespace RideshareAdmin.Services
             }
         }
 
+
+       //Top 5 User Most travelled
+        public IEnumerable<RideCountByUserDetailEntity> GetTopRiders()
+        {
+            var rideHistories = _sUnitOfwork.ridehistories.GetTopRidersTravelled().ToList();
+            List<RideCountByUserEntity> returnValue = new List<RideCountByUserEntity>();
+            returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<RideCountByUserEntity>(x)));
+            {
+                Mapper.CreateMap<RideCountByUserEntity, RideCountByUserDetailEntity>();
+                var usersModel = Mapper.Map<List<RideCountByUserEntity>, List<RideCountByUserDetailEntity>>(returnValue);
+                return usersModel;
+            }
+
+        }
     }
 }

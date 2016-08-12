@@ -41,8 +41,11 @@ namespace RideshareAdmin.DBAccess.Repository
             return DeserializedUser;
         }
 
-
-        public List<BsonDocument> GetAllByLocation()
+        /**
+         * Get User count By Location 
+         * Top 10 Locations most travelled 
+         * */
+        public List<BsonDocument> GetRidesCountByLocation()
         {
             var match = new BsonDocument
                 {
@@ -201,13 +204,22 @@ namespace RideshareAdmin.DBAccess.Repository
                                 }
                             },
                             {
-                                "totalMonthDistance", new BsonDocument
+                                "totalRidesByMonth", new BsonDocument
                                     {
                                         {
                                             "$sum", 1
                                         }
                                     }
+                            },
+                            {
+                                "distance", new BsonDocument
+                                    {
+                                        {
+                                            "$sum", "$distance"
+                                        }
+                                    }
                             }
+
                         }
                 }
             };
@@ -220,6 +232,70 @@ namespace RideshareAdmin.DBAccess.Repository
 
         }
 
+
+        /**
+         * Get Top 5 User Most travelled
+         * */
+        public List<BsonDocument> GetTopRidersTravelled()
+        {
+            var match = new BsonDocument
+                {
+                    {
+                        "$match",
+                        new BsonDocument
+                            {
+                                {"requestStatus", 2}
+                            }
+                    }
+                };
+
+            var group = new BsonDocument
+                          {
+                              { "$group",
+                                  new BsonDocument
+                                      {
+                                          { "_id", new BsonDocument
+                                                       {
+                                                           {
+                                                               "userName","$userName"
+                                                           }
+                                                       }
+                                          },
+                                          {
+                                              "noOfRidesByUser", new BsonDocument
+                                                           {
+                                                               {
+                                                                   "$sum", 1
+                                                               }
+                                                           }
+                                          }
+                                      }
+                            }
+                          };
+            var sort = new BsonDocument {
+                {
+                    "$sort",
+                            new BsonDocument
+                            {
+                                            { "noOfRidesByUser", -1 }
+                            }
+                }
+
+            };
+            var limit = new BsonDocument {
+                {
+                    "$limit",5
+
+                }
+
+            };
+
+            var pipeline = new[] { match, group, sort, limit };
+            var args = new AggregateArgs { Pipeline = pipeline };
+            var result = _collection.Aggregate(args).ToList();
+            return result;
+
+        }
 
 
     }

@@ -24,16 +24,16 @@ namespace RideshareAdmin.WebAPI.Controllers
 
 
         // GET api/user/id
-        public HttpResponseMessage Get(string id)
-        {
+        //public HttpResponseMessage Get(string id)
+        //{
 
-            var user = _userService.Get(id);
-            if (user.Any())
-            {
-                return Request.CreateResponse(HttpStatusCode.OK, user);
-            }
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
-        }
+        //    var user = _userService.Get(id);
+        //    if (user.Any())
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.OK, user);
+        //    }
+        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
+        //}
 
         //public HttpResponseMessage GetAll()
         //{
@@ -42,28 +42,28 @@ namespace RideshareAdmin.WebAPI.Controllers
         //        return Request.CreateResponse(HttpStatusCode.OK, user);
         //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
         //}
-        public HttpResponseMessage GetAll()
-        {
-            var users = _userService.GetAll();
-            if (users != null)
-            {
-                var userEntities = users as List<UserEntity> ?? users.ToList();
-                if (userEntities.Any())
-                    return Request.CreateResponse(HttpStatusCode.OK, userEntities);
-            }
-            //return Request.CreateResponse(HttpStatusCode.OK, user);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
+        //public HttpResponseMessage GetAll()
+        //{
+        //    var users = _userService.GetAll();
+        //    if (users != null)
+        //    {
+        //        var userEntities = users as List<UserEntity> ?? users.ToList();
+        //        if (userEntities.Any())
+        //            return Request.CreateResponse(HttpStatusCode.OK, userEntities);
+        //    }
+        //    //return Request.CreateResponse(HttpStatusCode.OK, user);
+        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
 
-            //var products = _productServices.GetAllProducts();
-            //if (products != null)
-            //{
-            //    var productEntities = products as List<ProductEntity> ?? products.ToList();
-            //    if (productEntities.Any())
-            //        return Request.CreateResponse(HttpStatusCode.OK, productEntities);
-            //}
-            //return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Products not found");
+        //    //var products = _productServices.GetAllProducts();
+        //    //if (products != null)
+        //    //{
+        //    //    var productEntities = products as List<ProductEntity> ?? products.ToList();
+        //    //    if (productEntities.Any())
+        //    //        return Request.CreateResponse(HttpStatusCode.OK, productEntities);
+        //    //}
+        //    //return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Products not found");
 
-        }
+        //}
 
         //[Route("Countuser")]
         //public HttpResponseMessage GetCountuser()
@@ -77,7 +77,7 @@ namespace RideshareAdmin.WebAPI.Controllers
         [Route("CountUser")]
         public HttpResponseMessage GetCountuser()
         {
-            UserCalculations userCount = _userService.GetUserCount();
+            UserCalculations userCount = _usercoordinateService.GetUserCount();
             List<UserCalculations> list = new List<UserCalculations>();
             list.Add(userCount);
             return Request.CreateResponse(HttpStatusCode.OK, list);
@@ -85,7 +85,7 @@ namespace RideshareAdmin.WebAPI.Controllers
         }
 
 
-        [Route("GetAllCoordinates")]
+        //api/User : Front requirment so changed changed usermodel to coordinatemodel details
         public HttpResponseMessage GetAllCoordinates()
         {
             var usercoordinates = _usercoordinateService.GetAllCoordinate();
