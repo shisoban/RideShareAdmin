@@ -38,4 +38,19 @@ namespace BusinessEntities
         public string driverUserName { get; set; }
     }
 
+
+    // GetDistanceByMonth
+    public class GetDistanceByMonthEntity
+    {
+        public RideHistoriesEntity _id { get; set; }
+        public int totalMonthDistance { get; set; }
+        public int requestedTime { get { return _id.requestedTime.Month; } set { } }
+    }
+
+    public class GetDistanceByMonthDetailEntity
+    {
+        public int totalMonthDistance { get; set; }
+        public int requestedTime { get; set; }
+    }
+
 }

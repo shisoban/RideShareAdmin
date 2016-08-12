@@ -36,6 +36,7 @@ namespace  RideshareAdmin.Services
         RideHistoryByCurrentMonth GetTotalRidesfilterbyCurrentMonth();
         RidesCount GetRidesCount();
         IEnumerable<RideCountByDriveDetailEntity> GetRideCountByDrivers();
+        IEnumerable<GetDistanceByMonthDetailEntity> GetDistanceByMonth();
     }
 
 

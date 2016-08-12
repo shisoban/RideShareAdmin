@@ -98,6 +98,14 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        [Route("DistanceByMonth")]
+        public HttpResponseMessage GetDistanceByMonth()
+        {
+            var rideHistories = _ridehistoriesService.GetDistanceByMonth().ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
+
+        }
+
     }
 }
 
