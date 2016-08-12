@@ -96,9 +96,12 @@ namespace RideshareAdmin.DBAccess.Repository
            
         }
 
-        /** This method is for getting number of riders of each Driver
-         *
-         */
+
+        /** This method for getting number of riders of each Driver
+        * group by Driver's userName
+        * request Status = 2
+        * sortBy "no Of Rides By Driver"
+        */
         public List<BsonDocument> GetRideCountByDriver()
         {
             var match1 = new BsonDocument
@@ -135,19 +138,25 @@ namespace RideshareAdmin.DBAccess.Repository
                                       }
                             }
                           };
-
-            /*var sort = new BsonDocument
+        var sort = new BsonDocument {
                 {
-                    {
-                        "$sort",
-                        new BsonDocument
+                    "$sort",
+                            new BsonDocument
                             {
-                                {"$noOfRidesByDriver"}
+                                            { "noOfRidesByDriver", -1 }
                             }
-                    }
-                };
-                */
-            var pipeline = new[] { match1, group  };
+                }
+
+            };
+        var limit = new BsonDocument {
+                {
+                    "$limit",5
+
+                }
+
+            };
+
+            var pipeline = new[] { match1, group, sort, limit };
             var args = new AggregateArgs { Pipeline = pipeline };
             var result = _collection.Aggregate(args).ToList();
             return result;

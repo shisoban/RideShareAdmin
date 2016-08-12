@@ -22,6 +22,7 @@ namespace RideshareAdmin.Console.Controllers
             vm.Noofusers = chartdata.noofusers;
             vm.CountCurrentMonthRide = sw.GetCurrentMonthRideCount();
             vm.CurrentMonthCO2Reduction = sw.GetCurrentMonthCO2Reducation();
+            vm.CO2Reductiontotal = sw.GetTotalCO2Reducation();
             return View(vm);
            
         }
