@@ -77,7 +77,7 @@ namespace RideshareAdmin.WebAPI.Controllers
         [Route("CountUser")]
         public HttpResponseMessage GetCountuser()
         {
-            UserCalculations userCount = _userService.GetUserCount();
+            UserCalculations userCount = _usercoordinateService.GetUserCount();
             List<UserCalculations> list = new List<UserCalculations>();
             list.Add(userCount);
             return Request.CreateResponse(HttpStatusCode.OK, list);
