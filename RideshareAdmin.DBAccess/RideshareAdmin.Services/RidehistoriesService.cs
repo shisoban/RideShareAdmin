@@ -226,6 +226,7 @@ namespace RideshareAdmin.Services
         public IEnumerable<GetDistanceByMonthDetailEntity> GetDistanceByMonth()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetDistanceByMonth().ToList();
+
             List<GetDistanceByMonthEntity> returnValue = new List<GetDistanceByMonthEntity>();
             returnValue.AddRange(rideHistories.Select(x => BsonSerializer.Deserialize<GetDistanceByMonthEntity>(x)));
             {

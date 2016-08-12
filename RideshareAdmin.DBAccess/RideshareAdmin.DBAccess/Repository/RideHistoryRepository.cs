@@ -201,13 +201,22 @@ namespace RideshareAdmin.DBAccess.Repository
                                 }
                             },
                             {
-                                "totalMonthDistance", new BsonDocument
+                                "totalRidesByMonth", new BsonDocument
                                     {
                                         {
                                             "$sum", 1
                                         }
                                     }
+                            },
+                            {
+                                "distance", new BsonDocument
+                                    {
+                                        {
+                                            "$sum", "$distance"
+                                        }
+                                    }
                             }
+
                         }
                 }
             };
