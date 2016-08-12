@@ -226,11 +226,19 @@
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+          <div class="content-wrapper">
             <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    @ViewBag.Title
+                    <small>@ViewBag.TitleSmall</small>
+                </h1>
+                @Html.Partial("_AdminBreadcrumb")
+            </section>
             <!-- Main content -->
-            @RenderBody()
-            <!-- /.content -->
+            <section class="content">
+                @RenderBody()
+            </section><!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">

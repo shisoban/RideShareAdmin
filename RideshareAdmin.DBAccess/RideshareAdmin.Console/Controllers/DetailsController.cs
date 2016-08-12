@@ -15,7 +15,7 @@ namespace RideshareAdmin.Console.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult UserList()
         {
             ServiceWrapper sw = new ServiceWrapper();
@@ -29,7 +29,7 @@ namespace RideshareAdmin.Console.Controllers
         }
 
 
-        
+        [Authorize]
         public ActionResult Rides(RideListViewModel ridelistvme)
         {
             ServiceWrapper sw = new ServiceWrapper();
@@ -44,6 +44,7 @@ namespace RideshareAdmin.Console.Controllers
             // return View(vm);
             return View(vm);
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Rides(RideListViewModel ridelistvm, string startdate, string endate)
         {
