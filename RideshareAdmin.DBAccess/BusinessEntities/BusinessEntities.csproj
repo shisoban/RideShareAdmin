@@ -52,8 +52,6 @@
     <Compile Include="DistanceInDateRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RideHistoriesEntity.cs" />
-    <Compile Include="RideHistoryByCurrentMonth.cs" />
-    <Compile Include="RidesByLocationEntity.cs" />
     <Compile Include="TotalDistance.cs" />
     <Compile Include="UserCalculations.cs" />
     <Compile Include="UserEntity.cs" />

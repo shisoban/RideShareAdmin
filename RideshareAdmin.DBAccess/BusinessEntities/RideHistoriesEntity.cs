@@ -26,6 +26,16 @@ namespace BusinessEntities
         public int __v { get; set; }
     }
 
+
+    //Total Rides For Current Month
+    public class RideHistoryByCurrentMonth
+    {
+        public int totalRides { get; set; }
+
+    }
+
+
+    //No of Rides By driver
     public class RideCountByDriverEntity{
         public RideHistoriesEntity _id { get; set; }
         public int noOfRidesByDriver { get; set; }
@@ -61,4 +71,35 @@ namespace BusinessEntities
         public double distance { get; set; }
     }
     //totalRidesByMonth
+
+
+    //Get No of Rides By users
+    public class RideCountByUserEntity
+    {
+        public RideHistoriesEntity _id { get; set; }
+        public int noOfRidesByUser { get; set; }
+        public string userName { get { return _id.userName; } set { } }
+    }
+
+    public class RideCountByUserDetailEntity
+    {
+        public int noOfRidesByUser { get; set; }
+        public string userName { get; set; }
+    }
+
+    // No of rides for each location
+    public class RidesByLocationEntity
+    {
+        public RideHistoriesEntity _id { get; set; }
+        public int noOfUsersByLocation { get; set; }
+        public string destinationName { get { return _id.destinationName; } set { } }
+
+
+    }
+
+    public class RidesByLocationDetailEntity
+    {
+        public int noOfUsersByLocation { get; set; }
+        public string destinationName { get; set; }
+    }
 }

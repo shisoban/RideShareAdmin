@@ -102,6 +102,13 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        [Route("NoOfRidesByUser")]
+        public HttpResponseMessage GetRidesCountByUser()
+        {
+            var rideHistories = _ridehistoriesService.GetTopRiders().ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
+
+        }
     }
 }
 
