@@ -82,10 +82,6 @@ namespace RideshareAdmin.WebAPI.Controllers
         public HttpResponseMessage GetAllByLocation()
         {
             var rideHistories = _ridehistoriesService.GetRidesByLocation().ToList();
-            // var userEntities = users as List<RideL> ?? rideHistories.ToList();
-            // if (rideHistories.Any())
-            //List<RideLocation> list = new List<RideLocation>();
-            // list.Add(rideHistories);
             return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
 
         }

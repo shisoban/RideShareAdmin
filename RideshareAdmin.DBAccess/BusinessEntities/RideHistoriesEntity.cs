@@ -42,15 +42,20 @@ namespace BusinessEntities
     // GetDistanceByMonth
     public class GetDistanceByMonthEntity
     {
+        public GetDistanceByMonthEntity2 _id { get; set ; }
+        public int totalMonthDistance { get; set; }
+        public int month { get { return _id.month; } set { } }
+    }
+    public class GetDistanceByMonthEntity2
+    {
         public RideHistoriesEntity _id { get; set; }
         public int totalMonthDistance { get; set; }
-        public int requestedTime { get { return _id.requestedTime.Month; } set { } }
+        public int month { get; set; }
     }
-
     public class GetDistanceByMonthDetailEntity
     {
         public int totalMonthDistance { get; set; }
-        public int requestedTime { get; set; }
+        public int month { get; set; }
     }
 
 }

@@ -44,6 +44,16 @@ namespace RideshareAdmin.DBAccess.Repository
 
         public List<BsonDocument> GetAllByLocation()
         {
+            var match = new BsonDocument
+                {
+                    {
+                        "$match",
+                        new BsonDocument
+                            {
+                                {"requestStatus", 2}
+                            }
+                    }
+                };
 
             var group = new BsonDocument
                           {
@@ -87,7 +97,7 @@ namespace RideshareAdmin.DBAccess.Repository
 
                 };
            
-            var pipeline = new[] { group,sort,limit };
+            var pipeline = new[] {match,group, sort,limit };
             var args = new AggregateArgs { Pipeline = pipeline };
             var result = _collection.Aggregate(args).ToList();
             return result;
@@ -187,9 +197,7 @@ namespace RideshareAdmin.DBAccess.Repository
                         {
                             { "_id", new BsonDocument
                                 {
-                                    {
-                                        "$month","$requestedTime"
-                                    }
+                                   { "month", new BsonDocument("$month", "$requestedTime") }
                                 }
                             },
                             {
