@@ -42,7 +42,7 @@
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-child"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">No Of Riders</span>
+                <span class="info-box-text">No Of Users</span>
                 <span class="info-box-number">@Model.Noofusers</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
@@ -63,7 +63,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-tree"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">CO<small>2</small> Reduced</span>
-                <span class="info-box-number">28</span>
+                <span class="info-box-number">@Model.CO2Reductiontotal</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
@@ -104,17 +104,17 @@
                             <strong>Goal Completion</strong>
                         </p>
                         <div class="progress-group">
-                            <span class="progress-text">Reach to Monthly Goal</span>
-                            <span class="progress-number"><b>160</b>/200</span>
+                            <span class="progress-text">Monthly Goal Rides</span>
+                            <span class="progress-number"><b>@Model.CountCurrentMonthRide</b>/200</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-aqua" style="width: @(Model.CountCurrentMonthRidePercentage)%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
-                            <span class="progress-text">CO2 Reducation Goal</span>
-                            <span class="progress-number"><b>310</b>/400</span>
+                            <span class="progress-text">Monthly GoalCO2 Reducation</span>
+                            <span class="progress-number"><b>@Model.CurrentMonthCO2Reduction</b>/400</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-red" style="width: @(Model.CurrentMonthCO2ReductionPercentage)%"></div>
                             </div>
                         </div>
                     </div><!-- /.col -->

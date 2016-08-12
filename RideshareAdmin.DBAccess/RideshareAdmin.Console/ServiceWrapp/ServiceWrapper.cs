@@ -142,6 +142,35 @@ namespace RideshareAdmin.Console.ServiceWrapp
         }
 
 
+        public string GetCurrentMonthRideCount()
+        {
+            string uri = baseUri + "/rideHistory/RidesCountByMonth";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var countAsObject = servicehelper.accessserviceAsObject(uri);
+            var countCurrentMonth = countAsObject["totalRides"].ToString();
+            return countCurrentMonth;
+        }
+
+
+        public string GetCurrentMonthCO2Reducation()
+        {
+            string uri = baseUri + "/TotalDistance/emission ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var co2ReductObject = servicehelper.accessserviceAsObject(uri);
+            var co2Reduction = co2ReductObject["emission"].ToString();
+            return co2Reduction;
+        }
+
+        public string GetTotalCO2Reducation()
+        {
+            string uri = baseUri + "/TotalDistance/Totalemission ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var co2ReductObject = servicehelper.accessserviceAsObject(uri);
+            var co2Reduction = co2ReductObject["emission"].ToString();
+            return co2Reduction;
+        }
+
+
         public static async Task RunAsync()
         {
             using (var client = new HttpClient())

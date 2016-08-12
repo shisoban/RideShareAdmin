@@ -8,7 +8,7 @@ namespace BusinessEntities
 {
     public class RideHistoriesEntity
     {
-       // public string _id { get; set; }
+        // public string _id { get; set; }
         //public ObjectId Id { get; set; }
         public string userName { get; set; }
         public string driverUserName { get; set; }
@@ -25,4 +25,37 @@ namespace BusinessEntities
         public string destinationLatitude { get; set; }
         public int __v { get; set; }
     }
+
+    public class RideCountByDriverEntity{
+        public RideHistoriesEntity _id { get; set; }
+        public int noOfRidesByDriver { get; set; }
+        public string driverUserName { get { return _id.driverUserName; } set { } }
+    }
+
+    public class RideCountByDriveDetailEntity
+    {
+        public int noOfRidesByDriver { get; set; }
+        public string driverUserName { get; set; }
+    }
+
+
+    // GetDistanceByMonth
+    public class GetDistanceByMonthEntity
+    {
+        public GetDistanceByMonthEntity2 _id { get; set ; }
+        public int totalMonthDistance { get; set; }
+        public int month { get { return _id.month; } set { } }
+    }
+    public class GetDistanceByMonthEntity2
+    {
+        public RideHistoriesEntity _id { get; set; }
+        public int totalMonthDistance { get; set; }
+        public int month { get; set; }
+    }
+    public class GetDistanceByMonthDetailEntity
+    {
+        public int totalMonthDistance { get; set; }
+        public int month { get; set; }
+    }
+
 }

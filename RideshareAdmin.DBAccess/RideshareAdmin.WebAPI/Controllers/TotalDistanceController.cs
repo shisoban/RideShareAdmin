@@ -9,13 +9,15 @@ using BusinessEntities;
 
 namespace RideshareAdmin.WebAPI.Controllers
 {
+    [RoutePrefix("api/TotalDistance")]
     public class TotalDistanceController : ApiController
     {
-        public HttpResponseMessage Post()
+        private readonly IRidehistoriesService _ridehistoriesService=new RidehistoriesService();
+        public HttpResponseMessage GetTotalDistance()
         {
-            IRidehistoriesService ridedetail = new RidehistoriesService();
+           // IRidehistoriesService ridedetail = new RidehistoriesService();
 
-            TotalDistance totalDistance = ridedetail.GetTotalDistance();
+            TotalDistance totalDistance = _ridehistoriesService.GetTotalDistance();
             if (totalDistance != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, totalDistance);
@@ -24,5 +26,34 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        [Route("emission")]
+        public HttpResponseMessage GetEmission()
+        {
+             //IRidehistoriesService ridedetail = new RidehistoriesService();
+
+            Emission emission = _ridehistoriesService.GetEmission();
+            if (emission != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, emission);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
+
         }
+
+
+
+        [Route("Totalemission")]
+        public HttpResponseMessage GetTotalemission()
+        {
+            //IRidehistoriesService ridedetail = new RidehistoriesService();
+
+            Emission emission = _ridehistoriesService.GetTotalEmission();
+            if (emission != null)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, emission);
+            }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Error in calculating distance");
+
+        }
+    }
 }
