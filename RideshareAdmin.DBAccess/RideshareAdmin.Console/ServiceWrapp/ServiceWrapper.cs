@@ -49,8 +49,9 @@ namespace RideshareAdmin.Console.ServiceWrapp
 
                 usermodel.firstname = serviceh[i]["firstName"].ToString();
                 usermodel.lastname = serviceh[i]["lastName"].ToString();
-                usermodel.userName = serviceh[i]["userName"].ToString();
+                usermodel.fullname = serviceh[i]["firstName"].ToString() + serviceh[i]["lastName"].ToString();
                 usermodel.email = serviceh[i]["email"].ToString();
+                usermodel.mobile = serviceh[i]["mobileNo"].ToString();
                 //__V = v[i]["veh_description"].ToString();
                 //email = v[i]["veh_location"].ToString();
                 usersList.Add(usermodel);

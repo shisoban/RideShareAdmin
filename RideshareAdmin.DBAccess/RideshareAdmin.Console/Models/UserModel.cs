@@ -10,6 +10,8 @@ namespace RideshareAdmin.Console.Models
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string userName { get; set; }
+        public string fullname { get; set; }
         public string email { get; set; }
+        public string mobile { get; set; }
     }
 }
