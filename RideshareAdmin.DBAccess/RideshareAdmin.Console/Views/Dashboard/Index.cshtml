@@ -62,7 +62,7 @@
                 <span class="info-box-icon bg-yellow"><i class="fa fa-automobile"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">No Of Rides</span>
-                    <span class="info-box-number">60</span>
+                    <span class="info-box-number">@Model.TotalRidesCount</span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div><!-- /.col -->
@@ -100,7 +100,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <p class="text-center">
-                                <strong>On: 7 Augest, 2016</strong>
+                                <strong>Chart</strong>
                             </p>
                             <div style="width: 100%;">
                                 <canvas id="canvas"></canvas>
@@ -411,14 +411,23 @@
             var $progress = $('#animationProgress');
 
             var config = {
-                type: 'pie',
+                type: 'bar',
                 data: {
                     labels: DESTINATION,
                     datasets: [ {
                         label: "Ride Count",
                         data: CountByDestination,
-                        fill: false
+                        backgroundColor: ["#8A2BE2","#A52A2A","#DEB887","#556B2F","#2F4F4F","#FF00FF","#FFD700","#F08080","#20B2AA","#DB7093"]
                     }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
                 }
                 
             };

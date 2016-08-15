@@ -58,9 +58,9 @@ namespace RideshareAdmin.WebAPI.Controllers
         public HttpResponseMessage GetRidesCount()
         {
             RidesCount ridesCount = _ridehistoriesService.GetRidesCount();
-            List<RidesCount> list = new List<RidesCount>();
-            list.Add(ridesCount);
-            return Request.CreateResponse(HttpStatusCode.OK, list);
+            //List<RidesCount> list = new List<RidesCount>();
+            //list.Add(ridesCount);
+            return Request.CreateResponse(HttpStatusCode.OK, ridesCount);
 
         }
 

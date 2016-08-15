@@ -202,6 +202,24 @@ namespace RideshareAdmin.Console.ServiceWrapp
             return co2Reduction;
         }
 
+        public string GetTotalDistanceCovered()
+        {
+            string uri = baseUri + "/TotalDistance ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var totalDistanceCoveredObject = servicehelper.accessserviceAsObject(uri);
+            var totalDistanceCovered = totalDistanceCoveredObject["totalDistance"].ToString();
+            return totalDistanceCovered;
+        }
+
+        public string GetTotalRidesCount()
+        {
+            string uri = baseUri + "/rideHistory/RidesCount ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var totalRidesObject = servicehelper.accessserviceAsObject(uri);
+            var totalRidesCount = totalRidesObject["ridesCount"].ToString();
+            return totalRidesCount;
+        }
+
 
         public static async Task RunAsync()
         {
