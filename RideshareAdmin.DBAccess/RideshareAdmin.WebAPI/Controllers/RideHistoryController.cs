@@ -16,9 +16,9 @@ namespace RideshareAdmin.WebAPI.Controllers
     {        
         private readonly IRidehistoriesService _ridehistoriesService;
 
-        public RideHistoryController()
+        public RideHistoryController(IRidehistoriesService ridehistory)
         {
-            _ridehistoriesService = new RidehistoriesService();
+            _ridehistoriesService = ridehistory;
         }
 
         // GET api/rideHistory/id

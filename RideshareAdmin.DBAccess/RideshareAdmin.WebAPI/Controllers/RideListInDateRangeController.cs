@@ -11,12 +11,19 @@ namespace RideshareAdmin.WebAPI.Controllers
 {
     public class RideListInDateRangeController : ApiController
     {
+        private readonly IRidehistoriesService _ridehistoriesService;
+
+        public RideListInDateRangeController(IRidehistoriesService ridehistory)
+        {
+            _ridehistoriesService = ridehistory;
+        }
+
         // Post method for ridelist date range
         public HttpResponseMessage Post([FromBody]DateRange dateRange)
         {
-            IRidehistoriesService ridedetail = new RidehistoriesService();
+            
 
-            IEnumerable<RideHistoriesEntity> rideHistoryInDateRange = ridedetail.RideListInDateRange(dateRange.start_date, dateRange.end_date);
+            IEnumerable<RideHistoriesEntity> rideHistoryInDateRange = _ridehistoriesService.RideListInDateRange(dateRange.start_date, dateRange.end_date);
 
             if (rideHistoryInDateRange.Any())
             {

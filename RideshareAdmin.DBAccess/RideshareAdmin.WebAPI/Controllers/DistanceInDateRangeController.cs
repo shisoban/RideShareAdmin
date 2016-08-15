@@ -11,12 +11,19 @@ namespace RideshareAdmin.WebAPI.Controllers
 {
     public class DistanceInDateRangeController : ApiController
     {
+        private readonly IRidehistoriesService _ridehistoriesService;
+
+        public  DistanceInDateRangeController(IRidehistoriesService ridehistory)
+        {
+            _ridehistoriesService = ridehistory;
+        }
+
         // Post method for distance in date range
         public HttpResponseMessage Post([FromBody]DateRange dateRange) {
 
-            IRidehistoriesService ridedetail = new RidehistoriesService();
+            
 
-            DistanceInDateRange distancetotal = ridedetail.GetTotalDistancefilterbyDateRange(dateRange.start_date, dateRange.end_date);
+            DistanceInDateRange distancetotal = _ridehistoriesService.GetTotalDistancefilterbyDateRange(dateRange.start_date, dateRange.end_date);
 
             if (distancetotal != null)
             {

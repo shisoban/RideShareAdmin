@@ -12,7 +12,12 @@ namespace RideshareAdmin.WebAPI.Controllers
     [RoutePrefix("api/TotalDistance")]
     public class TotalDistanceController : ApiController
     {
-        private readonly IRidehistoriesService _ridehistoriesService=new RidehistoriesService();
+        private readonly IRidehistoriesService _ridehistoriesService;
+
+        public TotalDistanceController(IRidehistoriesService ridehistory)
+        {
+            _ridehistoriesService = ridehistory;
+        }
         public HttpResponseMessage GetTotalDistance()
         {
             TotalDistance totalDistance = _ridehistoriesService.GetTotalDistance();

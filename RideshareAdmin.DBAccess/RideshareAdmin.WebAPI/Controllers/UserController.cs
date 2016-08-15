@@ -13,13 +13,13 @@ namespace RideshareAdmin.WebAPI.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
-        private readonly IUserService _userService;
+        
         private readonly ICoordinateService _usercoordinateService;
 
-        public UserController()
+        public UserController(ICoordinateService coordinate)
         {
-            _userService = new UserService();
-            _usercoordinateService = new CoordinateService();
+           
+            _usercoordinateService = coordinate;
         }
 
         // GET api/User/CountUser
