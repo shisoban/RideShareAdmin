@@ -1,8 +1,6 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using RideshareAdmin.DBAccess.Models;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace RideshareAdmin.DBAccess.Repository
@@ -23,8 +21,6 @@ namespace RideshareAdmin.DBAccess.Repository
             MongoCursor<Ridehistories> cursor = _collection.Find(query);
             return cursor.AsQueryable<Ridehistories>();
         }
-
-        
 
     }
 }

@@ -22,58 +22,7 @@ namespace RideshareAdmin.WebAPI.Controllers
             _usercoordinateService = new CoordinateService();
         }
 
-
-        // GET api/user/id
-        //public HttpResponseMessage Get(string id)
-        //{
-
-        //    var user = _userService.Get(id);
-        //    if (user.Any())
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.OK, user);
-        //    }
-        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found for provided username");
-        //}
-
-        //public HttpResponseMessage GetAll()
-        //{
-        //    var user = _userService.GetAll();
-        //    if (user.Any())
-        //        return Request.CreateResponse(HttpStatusCode.OK, user);
-        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
-        //}
-        //public HttpResponseMessage GetAll()
-        //{
-        //    var users = _userService.GetAll();
-        //    if (users != null)
-        //    {
-        //        var userEntities = users as List<UserEntity> ?? users.ToList();
-        //        if (userEntities.Any())
-        //            return Request.CreateResponse(HttpStatusCode.OK, userEntities);
-        //    }
-        //    //return Request.CreateResponse(HttpStatusCode.OK, user);
-        //    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
-
-        //    //var products = _productServices.GetAllProducts();
-        //    //if (products != null)
-        //    //{
-        //    //    var productEntities = products as List<ProductEntity> ?? products.ToList();
-        //    //    if (productEntities.Any())
-        //    //        return Request.CreateResponse(HttpStatusCode.OK, productEntities);
-        //    //}
-        //    //return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Products not found");
-
-        //}
-
-        //[Route("Countuser")]
-        //public HttpResponseMessage GetCountuser()
-        //{
-        //    var userCount = _userService.GetAll().Count();
-
-        //    return Request.CreateResponse(HttpStatusCode.OK, userCount);
-
-        //}
-
+        // GET api/User/CountUser
         [Route("CountUser")]
         public HttpResponseMessage GetCountuser()
         {
@@ -84,8 +33,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
-
-        //api/User : Front requirment so changed changed usermodel to coordinatemodel details
+        // GET api/User/CountUser
         public HttpResponseMessage GetAllCoordinates()
         {
             var usercoordinates = _usercoordinateService.GetAllCoordinate();
@@ -93,21 +41,5 @@ namespace RideshareAdmin.WebAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, usercoordinates);
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No result found.");
         }
-
-
-
-        //public void Post([FromBody]User user)
-        //{
-        //    _userService.Insert(user);
-
-        //}
-        //public void Delete(int id)
-        //{
-        //    _userService.Delete(id);
-        //}
-        //public void Put([FromBody]User user)
-        //{
-        //    _userService.Update(user);
-        //}
     }
 }

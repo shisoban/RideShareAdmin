@@ -11,6 +11,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 {
     public class DistanceInDateRangeController : ApiController
     {
+        // Post method for distance in date range
         public HttpResponseMessage Post([FromBody]DateRange dateRange) {
 
             IRidehistoriesService ridedetail = new RidehistoriesService();

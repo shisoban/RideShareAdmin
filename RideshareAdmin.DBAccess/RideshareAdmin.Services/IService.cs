@@ -18,10 +18,8 @@ namespace  RideshareAdmin.Services
 
     public interface ICoordinateService
     {
-        //IQueryable<Usercoordinate> GetAllCoordinate();
         IEnumerable<CoordinateEntity> GetAllCoordinate();
         UserCalculations GetUserCount();
-        //List<Usercoordinate> GetAllCoordinate();
     }
 
     public interface IRidehistoriesService
@@ -30,8 +28,7 @@ namespace  RideshareAdmin.Services
         IEnumerable<RideHistoriesEntity> GetAll();
         TotalDistance GetTotalDistance();
         Emission GetEmission();
-        Emission GetTotalEmission();
-        
+        Emission GetTotalEmission();     
         IEnumerable<RidesByLocationDetailEntity> GetRidesByLocation();
         DistanceInDateRange GetTotalDistancefilterbyDateRange(DateTime startDate, DateTime endDate);
         IEnumerable<RideHistoriesEntity> RideListInDateRange(DateTime startDate, DateTime endDate);
@@ -41,7 +38,5 @@ namespace  RideshareAdmin.Services
         IEnumerable<GetDistanceByMonthDetailEntity> GetDistanceByMonth();
         IEnumerable<RideCountByUserDetailEntity> GetTopRiders();
     }
-
-
 
 }
