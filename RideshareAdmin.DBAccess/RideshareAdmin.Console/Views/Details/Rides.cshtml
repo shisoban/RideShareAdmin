@@ -13,27 +13,19 @@
 <form method="post" action="@Url.Action("Rides", "Details")">
     <div>
 
+        
 
         <div class="input-group-addon date" data-provide="datepicker">
-            <p style="float: left; margin-top: 10px;"><b>Start Date</b></p>
-            @*<input type="text" class="form-control" id="fromdate">*@
-            <div class="input-group-addon">
-                <span class="glyphicon glyphicon-th"></span>
-                <input type="text" name="startdate" />
-            </div>
+            <p>Start Date: <input type="text" id="datepicker" name="startdate"></p>
         </div>
 
         <div class="input-group-addon date" data-provide="datepicker">
-            <p style="float: left; margin-top: 10px;"><b>Start Date</b></p>
-            @*<input type="text" class="form-control" id="Enddate">*@
-            <div class="input-group-addon">
-                <span class="glyphicon glyphicon-th"></span>
-                <input type="text" name="endate" />
-
-            </div>
-
-
+            <p>End Date: <input type="text" id="datepicker1" name="endate"></p>
         </div>
+
+
+        
+
         <input type="submit" value="Go" class="btn btn-success" />
     </div>
 
@@ -92,6 +84,19 @@
             $("#RideDetailTable").DataTable();
         });
     </script>
+
+
+@*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  });
+
+  $(function () {
+      $("#datepicker1").datepicker();
+  });
+</script>
 
 }
 
