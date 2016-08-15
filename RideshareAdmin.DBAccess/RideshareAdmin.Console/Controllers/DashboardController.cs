@@ -23,6 +23,8 @@ namespace RideshareAdmin.Console.Controllers
             vm.CountCurrentMonthRide = sw.GetCurrentMonthRideCount();
             vm.CurrentMonthCO2Reduction = sw.GetCurrentMonthCO2Reducation();
             vm.CO2Reductiontotal = sw.GetTotalCO2Reducation();
+            vm.destinationName = sw.GetLocationVsRideCountdName();
+            vm.countByDestination = sw.GetLocationVsRideCount_count();
             return View(vm);
            
         }
