@@ -1,10 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RideshareAdmin.DBAccess.Models
 {
@@ -12,7 +8,6 @@ namespace RideshareAdmin.DBAccess.Models
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
-        //public ObjectId Id { get; set; }
         public string userName { get; set; }
         public string driverUserName { get; set; }
         public DateTime requestedTime { get; set; }
