@@ -104,7 +104,7 @@
                             </p>
                             <div style="width: 100%;">
                                 <canvas id="canvas"></canvas>
-                                <progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                                <!--<progress id="animationProgress" max="1" value="0" style="width: 100%"></progress>-->
                             </div>
                         </div><!-- /.col -->
                         <div class="col-md-4">
@@ -404,62 +404,23 @@
         <script src="~/Scripts/AdminLTE/Chart.bundle.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBek2QKJkAxIhJ6AHP1Mu0hMa_lGpN-mkg&libraries=places&callback=initMap" async defer></script>
         <script>
-            var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
+            //var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var DESTINATION = @Html.Raw(Model.destinationName);
+            var CountByDestination =  @Html.Raw(Model.countByDestination);
+           
             var $progress = $('#animationProgress');
 
             var config = {
-                type: 'line',
+                type: 'pie',
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    datasets: [{
-                        label: "Expected ride Count ",
-                        data: [58, 67, 100, 35, 47, 87, 12],
-                        borderDash: [5, 5],
-                    }, {
-                        label: "Actual ride Count",
-                        data: [40, 78, 90, 54, 28, 68, 35],
+                    labels: DESTINATION,
+                    datasets: [ {
+                        label: "Ride Count",
+                        data: CountByDestination,
                         fill: false
                     }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: "Expected Ride count and Atcual Ride count"
-                    },
-                    animation: {
-                        duration: 1000,
-                        onProgress: function (animation) {
-                            $progress.attr({
-                                value: animation.animationObject.currentStep / animation.animationObject.numSteps,
-                            });
-                        },
-                        onComplete: function (animation) {
-                            window.setTimeout(function () {
-                                $progress.attr({
-                                    value: 0
-                                });
-                            }, 1000);
-                        }
-                    },
-                    tooltips: {
-                        mode: 'label',
-                    },
-                    scales: {
-                        xAxes: [{
-                            scaleLabel: {
-                                show: true,
-                                labelString: 'Month'
-                            }
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                show: true,
-                                labelString: 'Ride Counts'
-                            },
-                        }]
-                    }
                 }
+                
             };
 
             $.each(config.data.datasets, function (i, dataset) {

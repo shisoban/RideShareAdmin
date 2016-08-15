@@ -20,5 +20,7 @@ namespace RideshareAdmin.Console.Models
         public string CurrentMonthCO2ReductionPercentage { get { double Co2percentage = double.Parse(CurrentMonthCO2Reduction)/400*100;
                 return Co2percentage.ToString();
             } set { } }
+        public string destinationName { get; set; }
+        public string countByDestination { get; set; }
     }
 }
