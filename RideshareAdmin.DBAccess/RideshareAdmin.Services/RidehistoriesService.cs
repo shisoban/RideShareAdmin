@@ -16,9 +16,7 @@ namespace RideshareAdmin.Services
     public class RidehistoriesService : IRidehistoriesService
     {
         private readonly UnitOfWork _sUnitOfwork = new UnitOfWork();
-
-
-
+       
         /** Implemantation of get one Ridehistory records */
         public IQueryable<Ridehistories> Get(string i)
         {
@@ -40,13 +38,9 @@ namespace RideshareAdmin.Services
             return null;
         }
 
+        /** Implemantation of get rides count Ridehistory records */
         public RidesCount GetRidesCount()
         {
-            //var ridesCount = _sUnitOfwork.ridehistories.GetAll().Count();
-            //RidesCount count = new RidesCount();
-            //count.ridesCount = ridesCount;
-            //return count;
-
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             int activeRideCount = 0;
 
@@ -59,12 +53,11 @@ namespace RideshareAdmin.Services
                     activeRideCount = activeRideCount + 1;
                 }
             }
-
             rideCountObject.ridesCount = activeRideCount;
             return rideCountObject;
-
         }
 
+        /** Implemantation of get total distance Ridehistory records */
         public TotalDistance GetTotalDistance()
         {
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
@@ -76,22 +69,16 @@ namespace RideshareAdmin.Services
             {
                 if (ride.distance != 0 && ride.requestStatus == 2)
                 {
-                    /* changed due to db change of column from string to double */
-                    //string[] splitstringdistance = ride.distance.Split(null);
-                    //string stringdistance = splitstringdistance[0];
-                    // double doubledistance = double.Parse(stringdistance, System.Globalization.CultureInfo.InvariantCulture);
                     sum = sum + ride.distance;
                 }
             }
             totalDistance.totalDistance = sum;
             return totalDistance;
-
-
         }
 
+        /** Implemantation of get total distance filter by date range */
         public DistanceInDateRange GetTotalDistancefilterbyDateRange(DateTime startDate, DateTime endDate)
         {
-
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             double sum = 0;
 
@@ -101,20 +88,14 @@ namespace RideshareAdmin.Services
             {
                 if (ride.distance != 0 && ride.requestStatus == 2 && ride.requestedTime > startDate && ride.requestedTime < endDate)
                 {
-                    /* changed due to db change of column from string to double */
-
-                    //string[] splitstringdistance = ride.distance.Split(null);
-                    // string stringdistance = splitstringdistance[0];                  
-                    //double distance = double.Parse(ride.distance, System.Globalization.CultureInfo.InvariantCulture);
                     sum = sum + ride.distance;
                 }
             }
             totalDistance.distanceInDateRange = sum;
             return totalDistance;
-
-
         }
 
+        /** Implemantation of get Ride List In DateRange*/
         public IEnumerable<RideHistoriesEntity> RideListInDateRange(DateTime startDate, DateTime endDate)
         {
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
@@ -129,13 +110,12 @@ namespace RideshareAdmin.Services
                     rideListDBModel.Add(ride);
                 }
             }
-
             Mapper.CreateMap<Ridehistories, RideHistoriesEntity>();
             var rideHistoriesInDateRange = Mapper.Map<List<Ridehistories>, List<RideHistoriesEntity>>(rideListDBModel);
             return rideHistoriesInDateRange;
         }
 
-
+        /** Implemantation of get ride history by current month*/
         public RideHistoryByCurrentMonth GetTotalRidesfilterbyCurrentMonth()
         {
             int sMonth = DateTime.Now.Month;
@@ -151,13 +131,12 @@ namespace RideshareAdmin.Services
                     sum++;
                 }
             }
-
             totalrides.totalRides = sum;
             return totalrides;
 
         }
 
-        //
+        /** Implemantation of get get rides by location*/
         public IEnumerable<RidesByLocationDetailEntity> GetRidesByLocation()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetRidesCountByLocation().ToList();
@@ -171,10 +150,9 @@ namespace RideshareAdmin.Services
            
         }
 
-        //Get Emission for current Month
+        /** Get Emission for current Month*/
         public Emission GetEmission()
         {
-
             var rideHistory = _sUnitOfwork.ridehistories.GetAll().ToList();
             double sum = 0;
             
@@ -186,17 +164,14 @@ namespace RideshareAdmin.Services
                     sum = sum + ride.distance;
                 }
             }
-
             var totalDistance = sum;
             Emission emission = new Emission();
             emission.emission = ((totalDistance * 130) / 1000);
 
             return emission;
-
-
         }
 
-        /** This method for to get the ride count of each user*/
+        /** This method for to get get ride count by drivers*/
         public IEnumerable<RideCountByDriveDetailEntity> GetRideCountByDrivers()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetRideCountByDriver().ToList();
@@ -207,21 +182,18 @@ namespace RideshareAdmin.Services
                 var usersModel = Mapper.Map<List<RideCountByDriverEntity>, List<RideCountByDriveDetailEntity>>(returnValue);
                 return usersModel;
             }
-
         }
 
-        //Total Emission for Total Rides
+        /**Total emission for total rides */
         public Emission GetTotalEmission()
         {
-
             var totalDistance = GetTotalDistance().totalDistance;
             Emission emission = new Emission();
             emission.emission = ((totalDistance * 130) / 1000);
             return emission;
-
         }
 
-        //GetDistanceByMonth
+        /**Get distance by month */
         public IEnumerable<GetDistanceByMonthDetailEntity> GetDistanceByMonth()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetDistanceByMonth().ToList();
@@ -235,8 +207,7 @@ namespace RideshareAdmin.Services
             }
         }
 
-
-       //Top 5 User Most travelled
+        /**Top 5 User Most travelled */
         public IEnumerable<RideCountByUserDetailEntity> GetTopRiders()
         {
             var rideHistories = _sUnitOfwork.ridehistories.GetTopRidersTravelled().ToList();
@@ -249,5 +220,6 @@ namespace RideshareAdmin.Services
             }
 
         }
+
     }
 }

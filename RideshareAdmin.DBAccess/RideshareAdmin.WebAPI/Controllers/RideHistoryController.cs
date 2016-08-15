@@ -14,7 +14,6 @@ namespace RideshareAdmin.WebAPI.Controllers
     [RoutePrefix("api/rideHistory")]
     public class RideHistoryController : ApiController
     {        
-        //private readonly ICoordinateService _usercoordinateService;
         private readonly IRidehistoriesService _ridehistoriesService;
 
         public RideHistoryController()
@@ -22,10 +21,9 @@ namespace RideshareAdmin.WebAPI.Controllers
             _ridehistoriesService = new RidehistoriesService();
         }
 
-        // GET api/user/id
+        // GET api/rideHistory/id
         public HttpResponseMessage Get(string id)
         {
-
             var ridehistory = _ridehistoriesService.Get(id);
             if (ridehistory.Any())
             {
@@ -34,26 +32,20 @@ namespace RideshareAdmin.WebAPI.Controllers
             return Request.CreateErrorResponse(HttpStatusCode.NotFound, " ridehistory not found for provided username");
         }
 
-
+        // GET api/rideHistory/
         public HttpResponseMessage GetAll()
         {
             var rideHistories = _ridehistoriesService.GetAll();
 
             if (rideHistories.Any())
-                return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
-            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No result found.");
-            /*
-            if (rideHistories != null)
             {
-                var rideHistoryEntities = rideHistories as List<RideHistoriesEntity> ?? rideHistories.ToList();
-                if (rideHistoryEntities.any())
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, rideHistoryEntities);
-                }
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No Users found.");
-                */
+                return Request.CreateResponse(HttpStatusCode.OK, rideHistories);
             }
+            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "No result found.");
+            
+        }
 
+        // GET api/rideHistory/RidesCount
         [Route("RidesCount")]
         public HttpResponseMessage GetRidesCount()
         {
@@ -64,6 +56,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        // GET api/rideHistory/RidesCountByMonth
         [Route("RidesCountByMonth")]
         public HttpResponseMessage GetRidesCountByMonth()
         {
@@ -78,6 +71,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        // GET api/rideHistory/RidesByLocation
         [Route("RidesByLocation")]
         public HttpResponseMessage GetAllByLocation()
         {
@@ -86,6 +80,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        // GET api/rideHistory/NoOfRidesByDrivers
         [Route("NoOfRidesByDrivers")]
         public HttpResponseMessage GetRideCountByDrivers()
         {           
@@ -94,6 +89,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        // GET api/rideHistory/DistanceByMonth
         [Route("DistanceByMonth")]
         public HttpResponseMessage GetDistanceByMonth()
         {
@@ -102,6 +98,7 @@ namespace RideshareAdmin.WebAPI.Controllers
 
         }
 
+        // GET api/rideHistory/NoOfRidesByUser
         [Route("NoOfRidesByUser")]
         public HttpResponseMessage GetRidesCountByUser()
         {

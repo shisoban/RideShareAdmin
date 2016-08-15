@@ -3,8 +3,6 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
-using RideshareAdmin.DBAccess.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -48,57 +46,56 @@ namespace RideshareAdmin.DBAccess.Repository
         public List<BsonDocument> GetRidesCountByLocation()
         {
             var match = new BsonDocument
+            {
                 {
-                    {
-                        "$match",
-                        new BsonDocument
-                            {
-                                {"requestStatus", 2}
-                            }
-                    }
-                };
+                    "$match",
+                    new BsonDocument
+                        {
+                            {"requestStatus", 2}
+                        }
+                }
+            };
 
             var group = new BsonDocument
-                          {
-                              { "$group",
-                                  new BsonDocument
-                                      {
-                                          { "_id", new BsonDocument
-                                                       {
-                                                           {
-                                                               "destinationName","$destinationName"
-                                                           }
-                                                       }
-                                          },
-                                          {
-                                              "noOfUsersByLocation", new BsonDocument
-                                                           {
-                                                               {
-                                                                   "$sum", 1
-                                                               }
-                                                           }
-                                          }
-                                      }
-
+            {
+                { "$group",
+                    new BsonDocument
+                        {
+                            { "_id", new BsonDocument
+                                {
+                                    {
+                                        "destinationName","$destinationName"
+                                    }
+                                }
+                            },
+                            {
+                                "noOfUsersByLocation", new BsonDocument
+                                    {
+                                        {
+                                            "$sum", 1
+                                        }
+                                    }
                             }
-                          };
+                        }
+                }
+            };
             var sort = new BsonDocument {
-                    {
-                      "$sort",
-                             new BsonDocument
-                             {
-                                             { "noOfUsersByLocation", -1 }
-                             }
-                    }
+                {
+                    "$sort",
+                        new BsonDocument
+                        {
+                            { "noOfUsersByLocation", -1 }
+                        }
+                }
                     
-                };
+            };
             var limit = new BsonDocument {
                     {
                       "$limit",10
                             
                     }
 
-                };
+            };
            
             var pipeline = new[] {match,group, sort,limit };
             var args = new AggregateArgs { Pipeline = pipeline };
@@ -118,61 +115,59 @@ namespace RideshareAdmin.DBAccess.Repository
         public List<BsonDocument> GetRideCountByDriver()
         {
             var match1 = new BsonDocument
+            {
                 {
-                    {
-                        "$match",
-                        new BsonDocument
-                            {
-                                {"requestStatus", 2}
-                            }
-                    }
-                };
+                    "$match",
+                    new BsonDocument
+                        {
+                            {"requestStatus", 2}
+                        }
+                }
+            };
 
             var group = new BsonDocument
-                          {
-                              { "$group",
-                                  new BsonDocument
-                                      {
-                                          { "_id", new BsonDocument
-                                                       {
-                                                           {
-                                                               "driverUserName","$driverUserName"
-                                                           }
-                                                       }
-                                          },
-                                          {
-                                              "noOfRidesByDriver", new BsonDocument
-                                                           {
-                                                               {
-                                                                   "$sum", 1
-                                                               }
-                                                           }
-                                          }
-                                      }
-                            }
-                          };
-        var sort = new BsonDocument {
-                {
-                    "$sort",
-                            new BsonDocument
+            {
+                { "$group",
+                    new BsonDocument
+                        {
+                            { "_id", new BsonDocument
+                                {
+                                    {
+                                        "driverUserName","$driverUserName"
+                                    }
+                                }
+                            },
                             {
-                                            { "noOfRidesByDriver", -1 }
+                                "noOfRidesByDriver", new BsonDocument
+                                    {
+                                        {
+                                            "$sum", 1
+                                        }
+                                    }
                             }
+                        }
                 }
-
             };
+        var sort = new BsonDocument {
+            {
+                "$sort",
+                        new BsonDocument
+                        {
+                            { "noOfRidesByDriver", -1 }
+                        }
+            }
+
+        };
         var limit = new BsonDocument {
-                {
-                    "$limit",5
+            {
+                "$limit",5
+            }
+        };
 
-                }
-
-            };
-
-            var pipeline = new[] { match1, group, sort, limit };
-            var args = new AggregateArgs { Pipeline = pipeline };
-            var result = _collection.Aggregate(args).ToList();
-            return result;
+        var pipeline = new[] { match1, group, sort, limit };
+        var args = new AggregateArgs { Pipeline = pipeline };
+        var result = _collection.Aggregate(args).ToList();
+        return result;
 
         }
 
@@ -232,7 +227,6 @@ namespace RideshareAdmin.DBAccess.Repository
 
         }
 
-
         /**
          * Get Top 5 User Most travelled
          * */
@@ -255,48 +249,44 @@ namespace RideshareAdmin.DBAccess.Repository
                                   new BsonDocument
                                       {
                                           { "_id", new BsonDocument
-                                                       {
-                                                           {
-                                                               "userName","$userName"
-                                                           }
-                                                       }
+                                            {
+                                                {
+                                                    "userName","$userName"
+                                                }
+                                            }
                                           },
                                           {
-                                              "noOfRidesByUser", new BsonDocument
-                                                           {
-                                                               {
-                                                                   "$sum", 1
-                                                               }
-                                                           }
+                                           "noOfRidesByUser", new BsonDocument
+                                                {
+                                                    {
+                                                        "$sum", 1
+                                                    }
+                                                }
                                           }
                                       }
-                            }
+                                }
                           };
             var sort = new BsonDocument {
                 {
                     "$sort",
-                            new BsonDocument
-                            {
-                                            { "noOfRidesByUser", -1 }
-                            }
+                        new BsonDocument
+                        {
+                            { "noOfRidesByUser", -1 }
+                        }
                 }
 
             };
             var limit = new BsonDocument {
                 {
                     "$limit",5
-
                 }
-
             };
 
             var pipeline = new[] { match, group, sort, limit };
             var args = new AggregateArgs { Pipeline = pipeline };
             var result = _collection.Aggregate(args).ToList();
             return result;
-
         }
-
 
     }
 }

@@ -41,4 +41,4 @@ namespace RideshareAdmin.DBAccess.Repository
             return DeserializedUser;
         }
     }
-    }
+}

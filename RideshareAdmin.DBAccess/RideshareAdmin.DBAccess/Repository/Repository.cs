@@ -3,11 +3,8 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
-using RideshareAdmin.DBAccess.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace RideshareAdmin.DBAccess.Repository
 {
@@ -33,7 +30,7 @@ namespace RideshareAdmin.DBAccess.Repository
             return cursor.AsQueryable<T>();
         }
 
-        //Get  method to retrieve all records
+        //Get method to retrieve all records
         public List<T> GetAll()
         {
             var userList = _collection.FindAll().ToList();

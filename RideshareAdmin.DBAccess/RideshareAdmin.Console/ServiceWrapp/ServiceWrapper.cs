@@ -85,6 +85,37 @@ namespace RideshareAdmin.Console.ServiceWrapp
         //        return usersList;
             }
 
+        public string GetLocationVsRideCountdName()
+        {
+            string uri = baseUri + "/rideHistory/RidesByLocation ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var serviceh = servicehelper.accessservice(uri);
+            string[] destinationName = new string[serviceh.Count];
+
+            for (int i = 0; i < serviceh.Count; i++)
+            {
+                destinationName[i] = "\"" + serviceh[i]["destinationName"].ToString() + "\"";
+            }
+            string destinationlist = "[" + string.Join(", ", destinationName) + "]";
+            return destinationlist;
+
+        }
+
+        public string GetLocationVsRideCount_count()
+        {
+            string uri = baseUri + "/rideHistory/RidesByLocation ";
+            ServiceHelperList servicehelper = new ServiceHelperList();
+            var serviceh = servicehelper.accessservice(uri);
+            string[] count = new string[serviceh.Count];
+            for (int i = 0; i < serviceh.Count; i++)
+            {
+                count[i] = serviceh[i]["noOfUsersByLocation"].ToString();
+            }
+            string countList = "[" + string.Join(", ", count) + "]";
+            return countList;
+
+        }
+
 
         public List<RideHistoriesEntity> GetRides()
         {

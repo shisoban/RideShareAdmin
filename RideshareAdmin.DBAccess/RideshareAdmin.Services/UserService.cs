@@ -21,8 +21,8 @@ namespace RideshareAdmin.Services
             return (user);
         }
 
-
-        public IEnumerable<UserEntity> GetAll() //map
+        // Get All Details
+        public IEnumerable<UserEntity> GetAll()
         {
             var users = _sUnitOfwork.users.GetAll().ToList();
             if (users.Any())
@@ -32,35 +32,16 @@ namespace RideshareAdmin.Services
                 return usersModel;
             }
             return null;
-
-            //return _sUnitOfwork.users.GetAll();
         }
 
+        //Get users count
         public UserCalculations GetUserCount()
         {
             var usercount = _sUnitOfwork.users.GetAll().Count();
             UserCalculations count = new UserCalculations();
             count.userCount = usercount;
             return count;
-
-            //return _sUnitOfwork.users.GetAll();
         }
-
-        //public void Delete(int id)
-        //{
-        //    _sUnitOfwork.users.Delete(s => s.userID, id);
-        //}
-
-        //public void Insert(User user)
-        //{
-        //    _sUnitOfwork.users.Add(user);
-        //}
-
-        //public void Update(User user)
-        //{
-        //    _sUnitOfwork.users.Update(s => s.userID, user.userID,user);
-        //}
-
     }
 }
 

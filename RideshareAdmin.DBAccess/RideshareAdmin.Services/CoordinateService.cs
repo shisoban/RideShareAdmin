@@ -14,15 +14,7 @@ namespace RideshareAdmin.Services
     {
         private readonly UnitOfWork _sUnitOfwork1 = new UnitOfWork();
 
-        //public IQueryable<Usercoordinate> GetAllCoordinate()
-        //{
-        //    return _sUnitOfwork.usercoordinates.GetAll();
-        //}
-        //public List<Usercoordinate> GetAllCoordinate()
-        //{
-        //    return _sUnitOfwork.usercoordinates.GetAll();
-        //}
-
+        /* Get Get all coordinate */
         public IEnumerable<CoordinateEntity> GetAllCoordinate()
         {
             var usercoordinates = _sUnitOfwork1.usercoordinates.GetAll().ToList();
@@ -33,18 +25,15 @@ namespace RideshareAdmin.Services
                 return usercoordinatesModel;
             }
             return null;
-
-            //return _sUnitOfwork.users.GetAll();
         }
 
+        /* Get all users count */
         public UserCalculations GetUserCount()
         {
             var usercount = _sUnitOfwork1.usercoordinates.GetAll().Count();
             UserCalculations count = new UserCalculations();
             count.userCount = usercount;
             return count;
-
-            //return _sUnitOfwork.users.GetAll();
         }
 
     }
