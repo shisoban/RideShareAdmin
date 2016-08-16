@@ -10,7 +10,7 @@ namespace RideshareAdmin.Console.ServiceWrapp
 {
     public class ServiceHelperList
     {
-        public JArray accessservice(string uri)
+        public JArray Accessservice(string uri)
         {
             using (HttpClient httpClient = new HttpClient())
             {
@@ -21,7 +21,7 @@ namespace RideshareAdmin.Console.ServiceWrapp
             }
         }
 
-        public JObject accessserviceAsObject(string uri)
+        public JObject AccessserviceAsObject(string uri)
         {
             using (HttpClient httpClient = new HttpClient())
             {

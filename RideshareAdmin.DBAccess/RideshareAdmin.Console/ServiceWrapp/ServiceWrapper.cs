@@ -32,13 +32,14 @@ namespace RideshareAdmin.Console.ServiceWrapp
             }
         }
 
+        //get all user from http://localhost:51074/api/user
         public List<UserModel> GetUsers()
         {
             string uri = baseUri + "/user";
             //string uri = baseUri;
 
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri);
+            var serviceh = servicehelper.Accessservice(uri);
             DashboardStatics dasbordstatics = new DashboardStatics();
             UserModel usermodel;
             List<UserModel> usersList = new List<UserModel>();
@@ -58,38 +59,14 @@ namespace RideshareAdmin.Console.ServiceWrapp
             }
             return usersList;
 
-        //    using (HttpClient httpClient = new HttpClient())
-        //    {
-        //        Task<String> response = httpClient.GetStringAsync(uri);
-        //        var result = response.ToString();
-        //        JArray v = JArray.Parse(response.Result);
-        //        List<UserModel> usersList = new List<UserModel>();
-        //        //string firstname, lastname, userName, password, __V, email;
-        //  //      UserModel usermodel;
-        ////  public string password { get; set; }
-        ////   public int __v { get; set; }
-           
+        }
 
-        //        for (int i = 0; i < v.Count; i++)
-        //        {
-        //            usermodel = new UserModel();
-
-        //            usermodel.firstname = v[i]["firstName"].ToString();
-        //            usermodel.lastname = v[i]["lastName"].ToString();
-        //            usermodel.userName= v[i]["userName"].ToString();
-        //            usermodel.email = v[i]["email"].ToString();
-        //            //__V = v[i]["veh_description"].ToString();
-        //            //email = v[i]["veh_location"].ToString();
-        //            usersList.Add(usermodel);
-        //        }
-        //        return usersList;
-            }
-
+        //get distnation names for Location Vs RideCount graph using http://localhost:51074/api/rideHistory/RidesByLocation 
         public string GetLocationVsRideCountdName()
         {
-            string uri = baseUri + "/rideHistory/RidesByLocation ";
+            string uri = baseUri + "/rideHistory/RidesByLocation";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri);
+            var serviceh = servicehelper.Accessservice(uri);
             string[] destinationName = new string[serviceh.Count];
 
             for (int i = 0; i < serviceh.Count; i++)
@@ -101,11 +78,12 @@ namespace RideshareAdmin.Console.ServiceWrapp
 
         }
 
+        //get count for Location Vs RideCountdName graph using http://localhost:51074/api/rideHistory/RidesByLocation
         public string GetLocationVsRideCount_count()
         {
-            string uri = baseUri + "/rideHistory/RidesByLocation ";
+            string uri = baseUri + "/rideHistory/RidesByLocation";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri);
+            var serviceh = servicehelper.Accessservice(uri);
             string[] count = new string[serviceh.Count];
             for (int i = 0; i < serviceh.Count; i++)
             {
@@ -116,15 +94,13 @@ namespace RideshareAdmin.Console.ServiceWrapp
 
         }
 
-
+        // get all rides list using http://localhost:51074/api/rideHistory
         public List<RideHistoriesEntity> GetRides()
         {
             string uri = baseUri + "/rideHistory";
-            //string uri = baseUri;
 
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri);
-            // DashboardStatics dasbordstatics = new DashboardStatics();
+            var serviceh = servicehelper.Accessservice(uri);
             RideHistoriesEntity ridehistory;
             List<RideHistoriesEntity> ridelist = new List<RideHistoriesEntity>();
 
@@ -146,76 +122,54 @@ namespace RideshareAdmin.Console.ServiceWrapp
             }
             return ridelist;
 
-            //    using (HttpClient httpClient = new HttpClient())
-            //    {
-            //        Task<String> response = httpClient.GetStringAsync(uri);
-            //        var result = response.ToString();
-            //        JArray v = JArray.Parse(response.Result);
-            //        List<UserModel> usersList = new List<UserModel>();
-            //        //string firstname, lastname, userName, password, __V, email;
-            //  //      UserModel usermodel;
-            ////  public string password { get; set; }
-            ////   public int __v { get; set; }
-
-
-            //        for (int i = 0; i < v.Count; i++)
-            //        {
-            //            usermodel = new UserModel();
-
-            //            usermodel.firstname = v[i]["firstName"].ToString();
-            //            usermodel.lastname = v[i]["lastName"].ToString();
-            //            usermodel.userName= v[i]["userName"].ToString();
-            //            usermodel.email = v[i]["email"].ToString();
-            //            //__V = v[i]["veh_description"].ToString();
-            //            //email = v[i]["veh_location"].ToString();
-            //            usersList.Add(usermodel);
-            //        }
-            //        return usersList;
         }
 
-
+        // get Current month ride count for dashboard using http://localhost:51074/api/rideHistory/RidesCountByMonth
         public string GetCurrentMonthRideCount()
         {
             string uri = baseUri + "/rideHistory/RidesCountByMonth";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var countAsObject = servicehelper.accessserviceAsObject(uri);
+            var countAsObject = servicehelper.AccessserviceAsObject(uri);
             var countCurrentMonth = countAsObject["totalRides"].ToString();
             return countCurrentMonth;
         }
 
-
+        // get Current month co2 reduction for dashboard using http://localhost:51074/api/TotalDistance/emission
         public string GetCurrentMonthCO2Reducation()
         {
-            string uri = baseUri + "/TotalDistance/emission ";
+            string uri = baseUri + "/TotalDistance/emission";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var co2ReductObject = servicehelper.accessserviceAsObject(uri);
+            var co2ReductObject = servicehelper.AccessserviceAsObject(uri);
             var co2Reduction = co2ReductObject["emission"].ToString();
             return co2Reduction;
         }
 
+        // get total co2 reduction for dashboard using http://localhost:51074/api/TotalDistance/emission
         public string GetTotalCO2Reducation()
         {
             string uri = baseUri + "/TotalDistance/Totalemission ";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var co2ReductObject = servicehelper.accessserviceAsObject(uri);
+            var co2ReductObject = servicehelper.AccessserviceAsObject(uri);
             var co2Reduction = co2ReductObject["emission"].ToString();
             return co2Reduction;
         }
 
+        //get Total distance covered for dashboard using http://localhost:51074/api/TotalDistance
         public string GetTotalDistanceCovered()
         {
-            string uri = baseUri + "/TotalDistance ";
+            string uri = baseUri + "/TotalDistance";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var totalDistanceCoveredObject = servicehelper.accessserviceAsObject(uri);
+            var totalDistanceCoveredObject = servicehelper.AccessserviceAsObject(uri);
             var totalDistanceCovered = totalDistanceCoveredObject["totalDistance"].ToString();
             return totalDistanceCovered;
         }
 
+        //get Total ride count for dashboard using http://localhost:51074/api/rideHistory/RidesCount
         public string GetTotalRidesCount()
         {
-            string uri = baseUri + "/rideHistory/RidesCount ";
+            string uri = baseUri + "/rideHistory/RidesCount";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var totalRidesObject = servicehelper.accessserviceAsObject(uri);
+            var totalRidesObject = servicehelper.AccessserviceAsObject(uri);
             var totalRidesCount = totalRidesObject["ridesCount"].ToString();
             return totalRidesCount;
         }
@@ -235,56 +189,36 @@ namespace RideshareAdmin.Console.ServiceWrapp
                 {
                     UserModel users = await response.Content.ReadAsAsync<UserModel>();
                     string b = users.ToString();
-                  //  Console.WriteLine("{0}\t${1}\t{2}", product.Name, product.Price, product.Category);
+                    //  Console.WriteLine("{0}\t${1}\t{2}", product.Name, product.Price, product.Category);
                 }
 
-               
+
             }
         }
 
 
         public DashboardStatics GetNumberstatics()
         {
-           // http://localhost:51074/api/user/Countuser
             string uri = baseUri + "/user/Countuser";
             ServiceHelperList servicehelper = new ServiceHelperList();
-            var serviceh = servicehelper.accessservice(uri);
+            var serviceh = servicehelper.Accessservice(uri);
             DashboardStatics dasbordstatics = new DashboardStatics();
             for (int i = 0; i < serviceh.Count; i++)
             {
 
                 dasbordstatics.noofusers = serviceh[i]["userCount"].ToString();
-                //__V = v[i]["veh_description"].ToString();
-                //email = v[i]["veh_location"].ToString();
 
             }
             return dasbordstatics;
 
-            //using (HttpClient httpClient = new HttpClient())
-            //{
-            //    Task<String> response = httpClient.GetStringAsync(uri);
-            //    var result = response.ToString();
-            //    JArray v = JArray.Parse(response.Result);
-            //    //string firstname, lastname, userName, password, __V, email;
-            //    DashboardStatics dasbordstatics = new DashboardStatics();
-            //    //  public string password { get; set; }
-            //    //   public int __v { get; set; }
+        }
 
-            //for (int i = 0; i < v.Count; i++)
-            //    {
 
-            //        dasbordstatics.noofusers = v[i]["userCount"].ToString();
-            //        //__V = v[i]["veh_description"].ToString();
-            //        //email = v[i]["veh_location"].ToString();
-
-            //    }
-            //    return dasbordstatics;
-            }
-
-        public  List<RideHistoriesEntity> GetRidesDatarange(string startdate, string enddate)
+        //get rides between two date in dashboard using http://localhost:51074/api//RideListInDateRange
+        public List<RideHistoriesEntity> GetRidesDatarange(string startdate, string enddate)
         {
-            
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(baseUri+"/RideListInDateRange");
+
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(baseUri + "/RideListInDateRange");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
@@ -340,4 +274,4 @@ namespace RideshareAdmin.Console.ServiceWrapp
 
 }
 
-    
+

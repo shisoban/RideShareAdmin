@@ -12,16 +12,26 @@ namespace RideshareAdmin.Console.Models
         public string TotalRidesCount { get; set; }
         public string CountCurrentMonthRide { get; set; }
         public string CO2Reductiontotal { get; set; }
-        public string CountCurrentMonthRidePercentage { get
+        public string CountCurrentMonthRidePercentage
+        {
+            get
             {
                 double monthRidePercentage = double.Parse(CountCurrentMonthRide) / 200 * 100;
                 return monthRidePercentage.ToString();
-            } set{ } }
+            }
+            set { }
+        }
         public string CurrentMonthCO2Reduction { get; set; }
-        public string CurrentMonthCO2ReductionPercentage { get { double Co2percentage = double.Parse(CurrentMonthCO2Reduction)/400*100;
+        public string CurrentMonthCO2ReductionPercentage
+        {
+            get
+            {
+                double Co2percentage = double.Parse(CurrentMonthCO2Reduction)/400*100;
                 return Co2percentage.ToString();
-            } set { } }
-        public string destinationName { get; set; }
-        public string countByDestination { get; set; }
+            }
+            set { }
+        }
+        public string DestinationName { get; set; }
+        public string CountByDestination { get; set; }
     }
 }
